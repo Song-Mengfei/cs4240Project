@@ -54,5 +54,18 @@ public class RelativePosition : MonoBehaviour
         {
             Debug.Log("Hands in place!");
         }
+
+        bool isPoseCorrect = PoseManager.instance.CheckPose(headPosition, leftControllerPosition, rightControllerPosition);
+
+        if (isPoseCorrect)
+        {
+            DebugManager.Log("PlayerPose is correct");
+        }
+        else
+        {
+            DebugManager.Log("PlayerPose is not correct");
+            DebugManager.Log("Pose should be ");
+            DebugManager.Log(PoseManager.instance.currPose.ToString());
+        }
     }
 }
