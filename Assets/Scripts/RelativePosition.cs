@@ -42,7 +42,7 @@ public class RelativePosition : MonoBehaviour
         //Debug.Log($"Left hand distance: {leftDist}");
         //Debug.Log($"Right hand distance: {rightDist}");
 
-        float tolerance = 0.1f;
+        float tolerance = 1f;
 
         bool leftInPlace = leftDist < tolerance;
         bool rightInPlace = rightDist < tolerance;
@@ -64,6 +64,8 @@ public class RelativePosition : MonoBehaviour
         else
         {
             DebugManager.Log("PlayerPose is not correct");
+            DebugManager.Log("PlayerPose is: ");
+            DebugManager.Log(headPosition + " " + leftControllerPosition + " " + rightControllerPosition);
             DebugManager.Log("Pose should be ");
             DebugManager.Log(PoseManager.instance.currPose.ToString());
         }
