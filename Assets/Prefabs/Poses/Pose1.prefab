@@ -44,6 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89c4c5e333626ed44be09c8317d6250a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  headPos: {x: 1, y: 1, z: 1}
+  headPos: {x: 0, y: 0.1, z: 0}
+  headRadius: 0.3
   leftHandPos: {x: 0, y: 0, z: 0}
-  rightHandPos: {x: 0, y: 0, z: 0}
+  leftHandRadius: 0.3
+  rightHandPos: {x: 0, y: 0, z: -0.5}
+  rightHandRadius: 0.3

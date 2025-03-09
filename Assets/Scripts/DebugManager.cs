@@ -29,7 +29,7 @@ public class DebugManager : MonoBehaviour
 
         if (instance.debugText != null)
         {
-            int maxLines = 10; // Adjust as needed
+            int maxLines = 5; // Adjust as needed
             string[] lines = instance.debugText.text.Split('\n');
             if (lines.Length >= maxLines)
             {
