@@ -2,26 +2,8 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoseManager : MonoBehaviour
-{
-
-    #region Singleton
-    public static PoseManager instance;
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-
-            currPose = poses[0];
-        }
-        else if (instance != this)
-        {
-            Destroy(this);
-        }
-    }
-    #endregion
-    
+public class PoseManager : SingletonPatternPersistent<PoseManager>
+{    
     public Pose currPose;
     public List<Pose> poses;
 
