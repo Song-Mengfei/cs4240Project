@@ -42,7 +42,7 @@ public class Pose : MonoBehaviour
     public override string ToString()
     {
         return "headpos: " + headPos + ", headRadius: " + headRadius +
-            ", leftHandPos: " + leftHandPos + ", leftHandRadius: " + leftHandRadius +
-            ", rightHandPos: " + rightHandPos + ", rightHandRadius: " + rightHandRadius;
+            "\n leftHandPos: " + leftHandPos + ", leftHandRadius: " + leftHandRadius +
+            "\n rightHandPos: " + rightHandPos + ", rightHandRadius: " + rightHandRadius;
     }
 }

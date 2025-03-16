@@ -10,6 +10,7 @@ public class RelativePosition : MonoBehaviour
     public Vector3 targetLeftRelative = new Vector3(0f, 0f, 0f);
     public Vector3 targetRightRelative = new Vector3(0f, 0f, 0f);
 
+
     void OnEnable()
     {
         headPositionAction.action.Enable();
@@ -55,19 +56,19 @@ public class RelativePosition : MonoBehaviour
             Debug.Log("Hands in place!");
         }
 
-        bool isPoseCorrect = PoseManager.Instance.CheckPose(headPosition, leftControllerPosition, rightControllerPosition);
+        bool isPoseCorrect = PoseManager_test.Instance.CheckPose(headPosition, leftControllerPosition, rightControllerPosition);
 
-        if (isPoseCorrect)
-        {
-            DebugManager.Log("PlayerPose is correct");
-        }
-        else
-        {
-            DebugManager.Log("PlayerPose is not correct");
-            DebugManager.Log("PlayerPose is: ");
-            DebugManager.Log(headPosition + " " + leftControllerPosition + " " + rightControllerPosition);
-            DebugManager.Log("Pose should be ");
-            DebugManager.Log(PoseManager.Instance.currPose.ToString());
-        }
+        //if (isPoseCorrect)
+        //{
+        //    DebugManager.Log("PlayerPose is correct");
+        //}
+        //else
+        //{
+        //    DebugManager.Log("PlayerPose is not correct");
+        //    DebugManager.Log("PlayerPose is: ");
+        //    DebugManager.Log(headPosition + " " + leftControllerPosition + " " + rightControllerPosition);
+        //    DebugManager.Log("Pose should be ");
+        //    DebugManager.Log(PoseManager_test.Instance.currPose.ToString());
+        //}
     }
 }
