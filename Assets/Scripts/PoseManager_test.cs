@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoseManager_test : SingletonPatternPersistent<PoseManager>
+public class PoseManager_test : SingletonPatternPersistent<PoseManager_test>
 {
     public Pose currPose;
     public List<Pose> poses;

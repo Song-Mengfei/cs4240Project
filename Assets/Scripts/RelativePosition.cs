@@ -10,6 +10,12 @@ public class RelativePosition : MonoBehaviour
     public Vector3 targetLeftRelative = new Vector3(0f, 0f, 0f);
     public Vector3 targetRightRelative = new Vector3(0f, 0f, 0f);
 
+    private PoseManager_test poseManager_Test;
+    private void Start()
+    {
+        poseManager_Test = PoseManager_test.Instance;
+        poseManager_Test.Start();
+    }
 
     void OnEnable()
     {
@@ -56,7 +62,9 @@ public class RelativePosition : MonoBehaviour
             Debug.Log("Hands in place!");
         }
 
-        bool isPoseCorrect = PoseManager_test.Instance.CheckPose(headPosition, leftControllerPosition, rightControllerPosition);
+
+
+        bool isPoseCorrect = poseManager_Test.CheckPose(headPosition, leftControllerPosition, rightControllerPosition);
 
         //if (isPoseCorrect)
         //{

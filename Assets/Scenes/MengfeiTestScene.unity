@@ -2069,7 +2069,7 @@ Transform:
   m_GameObject: {fileID: 1149307463}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.1175997, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2232,6 +2232,7 @@ GameObject:
   - component: {fileID: 1298983394}
   - component: {fileID: 1298983395}
   - component: {fileID: 1298983396}
+  - component: {fileID: 1298983397}
   m_Layer: 0
   m_Name: Right
   m_TagString: Untagged
@@ -2338,6 +2339,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   otherController: {fileID: 1523496647}
   recordAction: {fileID: 187161793506945269, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+--- !u!114 &1298983397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298983393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fdd00df9f5ed814abcb7909a6e66162, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cylinderPrefab: {fileID: 4516944188995070907, guid: 99d44acb9f13a0148a049ede5c50dc64, type: 3}
+  headPositionAction: {fileID: 1726528566085808798, guid: f0d05e514a16d224f822c0cd4567eaa4, type: 3}
 --- !u!1001 &1323951492
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2610,6 +2625,7 @@ GameObject:
   - component: {fileID: 1523496648}
   - component: {fileID: 1523496649}
   - component: {fileID: 1523496650}
+  - component: {fileID: 1523496651}
   m_Layer: 0
   m_Name: Left
   m_TagString: Untagged
@@ -2716,6 +2732,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   otherController: {fileID: 1298983393}
   recordAction: {fileID: -6131295136447488360, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+--- !u!114 &1523496651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1523496647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fdd00df9f5ed814abcb7909a6e66162, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cylinderPrefab: {fileID: 4516944188995070907, guid: 99d44acb9f13a0148a049ede5c50dc64, type: 3}
+  headPositionAction: {fileID: 1726528566085808798, guid: f0d05e514a16d224f822c0cd4567eaa4, type: 3}
 --- !u!1001 &1526186055
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3645,7 +3675,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 303f0fefba5bbd64295858982b175a5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currPose: {fileID: 6789764467458358626, guid: 10e2dede59b77cd44a1ac019a09d989f, type: 3}
+  currPose: {fileID: 6789764467458358626, guid: f5dcee5f98f7bc342a8ad2881e80f4a4, type: 3}
   poses: []
   offset: {x: 0, y: 2.5, z: 3}
 --- !u!1001 &2072493776
