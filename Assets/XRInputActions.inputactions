@@ -31,6 +31,33 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "HeadRotaion",
+                    "type": "Value",
+                    "id": "69b3cbb6-b285-412d-8e3e-eb9f458009f2",
+                    "expectedControlType": "Quaternion",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "LeftControllerRotation",
+                    "type": "Value",
+                    "id": "67047c7c-f0bc-4d5f-983f-6cb7e7fa5e9c",
+                    "expectedControlType": "Quaternion",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "RightControllerRotation",
+                    "type": "Value",
+                    "id": "3ccdd6ed-0df4-4b26-896b-fbb303517616",
+                    "expectedControlType": "Quaternion",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -64,6 +91,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "RightControllerPosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f418363b-bed6-4450-ada0-8c8ff19a969a",
+                    "path": "<XRHMD>/deviceRotation",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HeadRotaion",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5f82d199-57fb-4d41-a57a-41136e18910e",
+                    "path": "<XRController>{LeftHand}/deviceRotation",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftControllerRotation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a6fd0fa7-86eb-4a99-be61-c84a8086060b",
+                    "path": "<XRController>{RightHand}/deviceRotation",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightControllerRotation",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -1,42 +1,41 @@
 using TMPro;
 using UnityEngine;
 
-public class DebugManager : MonoBehaviour
+public class DebugManager : SingletonPatternPersistent<DebugManager>
 {
-    #region Singleton
-    public static DebugManager instance;
-    private void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else if (instance != this)
-        {
-            Destroy(this);
-        }
-
-        instance.debugText.text = "";
-    }
-    #endregion
-
     public bool debugON;
     public TextMeshProUGUI debugText;
     public static void Log(string message)
     {
-        if (!instance.debugON)
+        if (!Instance.debugON)
             return;
 
-        if (instance.debugText != null)
+        if (Instance.debugText != null)
         {
-            int maxLines = 5; // Adjust as needed
-            string[] lines = instance.debugText.text.Split('\n');
+            int maxLines = 10; // Adjust as needed
+            string[] lines = Instance.debugText.text.Split('\n');
             if (lines.Length >= maxLines)
             {
-                instance.debugText.text = string.Join("\n", lines, 1, lines.Length - 1);
+                Instance.debugText.text = string.Join("\n", lines, 1, lines.Length - 1);
             }
-            instance.debugText.text += message + "\n";
+            Instance.debugText.text += message + "\n";
         }
         Debug.Log(message);
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            OurSceneManager.Instance.LoadMainScene();
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            OurSceneManager.Instance.LoadMindfullnessScene();
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            OurSceneManager.Instance.LoadYogaScene();
+        }
     }
 }
