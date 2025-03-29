@@ -24,5 +24,17 @@ public class PauseManager : SingletonPattern<PauseManager>
     {
         SceneManager.LoadScene("HomeScene");  // Replace with your actual home scene name
     }
+
+    // Pause all audio sources
+    void PauseAll()
+    {
+        AudioListener.pause = true;
+    }
+
+    // Resume all audio sources
+    void ResumeAll() 
+    {
+        AudioListener.pause = false;
+    }
 }
 

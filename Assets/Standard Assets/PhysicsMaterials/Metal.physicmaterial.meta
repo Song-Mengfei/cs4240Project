@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Materials/lip.mat.meta
+guid: 82fd2bc1af6c34126a3124d4fa870ab8
+========
+guid: 01571ba68fb2dad46aa03094ab219579
+timeCreated: 1427463081
+licenseType: Store
+>>>>>>>> main:Assets/Standard Assets/PhysicsMaterials/Metal.physicmaterial.meta
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

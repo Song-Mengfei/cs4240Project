@@ -4,102 +4,161 @@ using UnityEngine.InputSystem;
 public class ArmGeneration : MonoBehaviour
 {
     public GameObject cylinderPrefab;
-    public InputActionReference headPositionAction;
 
-    private string armName;
-    private float forearmLength;
+    private float leftForearmLength;
+    private float rightForearmLength;
     private float shoulderLength;
-    private GameObject forearm;
-    private GameObject upperArm;
-    private GameObject elbow;
-    private GameObject shoulder;
-    private Vector3 elbowPos;
+
+    private GameObject leftForearm;
+    private GameObject rightForearm;
+    private GameObject leftUpperArm;
+    private GameObject rightUpperArm;
+    private GameObject leftElbow;
+    private GameObject rightElbow;
+    private GameObject leftShoulder;
+    private GameObject rightShoulder;
+
+    private Vector3 leftElbowPos;
+    private Vector3 rightElbowPos;
+    private Vector3 leftShoulderPos;
+    private Vector3 rightShoulderPos;
 
     private void Start()
     {
-        armName = gameObject.name;
-        string forearmName = armName + "ForearmLength";
-        string upperArmName = armName + "UpperArmLength";
-
-        forearmLength = PlayerPrefs.GetFloat(forearmName, 0.4f);
+        leftForearmLength = PlayerPrefs.GetFloat("LeftForearmLength", 0.4f);
+        rightForearmLength = PlayerPrefs.GetFloat("RightForearmLength", 0.4f);
         shoulderLength = PlayerPrefs.GetFloat("ShoulderLength", 0.4f);
     }
 
-    void Update()
+    public void GenerateArms(Vector3 _headPos, Vector3 _leftHandPos, Vector3 _rightHandPos, Quaternion _headRot, Quaternion _leftHandRot, Quaternion _rightHandRot)
     {
-        GenerateForearm();
-        GenerateUpperArm();
+        GetShoulderPos(_headPos, _headRot);
+        GenerateLeftForearm(_leftHandPos, _leftHandRot);
+        GenerateRightForearm(_rightHandPos, _rightHandRot);
+        GenerateLeftUpperArm();
+        GenerateRightUpperArm();
     }
 
-    void GenerateForearm()
+    void GetShoulderPos(Vector3 headPos, Quaternion headRot)
     {
-        Vector3 controllerPos = transform.position;
-        Quaternion controllerRot = transform.rotation;
+        Vector3 baseOffset = new Vector3(0.0f, -0.2f, 0.0f);
+        float headYaw = headRot.eulerAngles.y * Mathf.Deg2Rad;
 
-        Vector3 downDirection = controllerRot * Vector3.down;
-        Vector3 backDirection = controllerRot * -Vector3.forward;
+        Vector3 rightVector = new Vector3(Mathf.Cos(headYaw), 0, -Mathf.Sin(headYaw));
+        Vector3 shoulderOffset = (shoulderLength / 2) * rightVector;
 
-        Vector3 forearmPos = controllerPos + backDirection * (forearmLength / 2);
+        rightShoulderPos = headPos + baseOffset + shoulderOffset;
+        leftShoulderPos = headPos + baseOffset + (shoulderOffset * -1);
 
-        Quaternion forearmRot = Quaternion.LookRotation(downDirection, controllerRot * Vector3.forward);
-
-        if (forearm == null)
-        {
-            forearm = Instantiate(cylinderPrefab, forearmPos, forearmRot);
-        }
-
-        forearm.transform.position = forearmPos;
-        forearm.transform.rotation = forearmRot;
-        forearm.transform.localScale = new Vector3(0.05f, forearmLength / 2, 0.05f);
-        elbowPos = forearmPos + forearmRot * Vector3.down * (forearmLength / 2);
     }
 
-    void GenerateUpperArm()
+    void GenerateLeftForearm(Vector3 leftHandPos, Quaternion leftHandRot)
     {
-        Vector3 headPos = headPositionAction.action.ReadValue<Vector3>();
-        Vector3 offset = new Vector3(0.0f, 1.95f, -0.05f);
-        if (armName == "Left")
+        Vector3 downDirection = leftHandRot * Vector3.down;
+        Vector3 backDirection = leftHandRot * -Vector3.forward;
+
+        Vector3 forearmPos = leftHandPos + backDirection * (leftForearmLength / 2);
+
+        Quaternion forearmRot = Quaternion.LookRotation(downDirection, leftHandRot * Vector3.forward);
+
+        if (leftForearm == null)
         {
-            offset -= new Vector3(shoulderLength / 2, 0.0f, 0.0f);
-        }
-        else
-        {
-            offset += new Vector3(shoulderLength / 2, 0.0f, 0.0f);
+            leftForearm = Instantiate(cylinderPrefab, forearmPos, forearmRot);
         }
 
-        Vector3 shoulderPos = headPos + offset;
-        Vector3 direction = elbowPos - shoulderPos;
-        Vector3 upperArmPos = (shoulderPos + elbowPos) / 2;
+        leftForearm.transform.position = forearmPos;
+        leftForearm.transform.rotation = forearmRot;
+        leftForearm.transform.localScale = new Vector3(0.05f, leftForearmLength / 2, 0.05f);
+        leftElbowPos = forearmPos + forearmRot * Vector3.down * (leftForearmLength / 2);
+    }
+
+    void GenerateRightForearm(Vector3 rightHandPos, Quaternion rightHandRot)
+    {
+        Vector3 downDirection = rightHandRot * Vector3.down;
+        Vector3 backDirection = rightHandRot * -Vector3.forward;
+
+        Vector3 forearmPos = rightHandPos + backDirection * (rightForearmLength / 2);
+
+        Quaternion forearmRot = Quaternion.LookRotation(downDirection, rightHandRot * Vector3.forward);
+
+        if (rightForearm == null)
+        {
+            rightForearm = Instantiate(cylinderPrefab, forearmPos, forearmRot);
+        }
+
+        rightForearm.transform.position = forearmPos;
+        rightForearm.transform.rotation = forearmRot;
+        rightForearm.transform.localScale = new Vector3(0.05f, rightForearmLength / 2, 0.05f);
+        rightElbowPos = forearmPos + forearmRot * Vector3.down * (rightForearmLength / 2);
+    }
+
+    void GenerateLeftUpperArm()
+    {
+        Vector3 direction = leftElbowPos - leftShoulderPos;
+        Vector3 upperArmPos = (leftShoulderPos + leftElbowPos) / 2;
 
         Quaternion upperArmRot = Quaternion.FromToRotation(Vector3.up, direction);
 
         float upperArmLength = direction.magnitude;
 
-        if (upperArm == null)
+        if (leftUpperArm == null)
         {
-            upperArm = Instantiate(cylinderPrefab, upperArmPos, upperArmRot);
+            leftUpperArm = Instantiate(cylinderPrefab, upperArmPos, upperArmRot);
         }
 
-        if (shoulder == null)
+        if (leftShoulder == null)
         {
-            shoulder = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            leftShoulder = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         }
 
-        if (elbow == null)
+        if (leftElbow == null)
         {
-            elbow = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            leftElbow = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         }
 
-        upperArm.transform.position = upperArmPos;
-        upperArm.transform.rotation = upperArmRot;
-        upperArm.transform.localScale = new Vector3(0.05f, upperArmLength / 2, 0.05f);
+        leftUpperArm.transform.position = upperArmPos;
+        leftUpperArm.transform.rotation = upperArmRot;
+        leftUpperArm.transform.localScale = new Vector3(0.05f, upperArmLength / 2, 0.05f);
 
-        shoulder.transform.position = shoulderPos;
-        shoulder.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
+        leftShoulder.transform.position = leftShoulderPos;
+        leftShoulder.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
 
-        elbow.transform.position = elbowPos;
-        elbow.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
+        leftElbow.transform.position = leftElbowPos;
+        leftElbow.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
     }
 
+    void GenerateRightUpperArm()
+    {
+        Vector3 direction = rightElbowPos - rightShoulderPos;
+        Vector3 upperArmPos = (rightShoulderPos + rightElbowPos) / 2;
 
+        Quaternion upperArmRot = Quaternion.FromToRotation(Vector3.up, direction);
+
+        float upperArmLength = direction.magnitude;
+
+        if (rightUpperArm == null)
+        {
+            rightUpperArm = Instantiate(cylinderPrefab, upperArmPos, upperArmRot);
+        }
+
+        if (rightShoulder == null)
+        {
+            rightShoulder = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        }
+
+        if (rightElbow == null)
+        {
+            rightElbow = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        }
+
+        rightUpperArm.transform.position = upperArmPos;
+        rightUpperArm.transform.rotation = upperArmRot;
+        rightUpperArm.transform.localScale = new Vector3(0.05f, upperArmLength / 2, 0.05f);
+
+        rightShoulder.transform.position = leftShoulderPos;
+        rightShoulder.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
+
+        rightElbow.transform.position = rightElbowPos;
+        rightElbow.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
+    }
 }

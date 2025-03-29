@@ -1,5 +1,11 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Materials/light.mat.meta
 guid: 5b7af3b6c2d0b41219ae40159beb05ca
+========
+guid: e52fb17f9b1e7fd48b8955f1391d3688
+timeCreated: 1427463081
+licenseType: Store
+>>>>>>>> main:Assets/Standard Assets/PhysicsMaterials/MaxFriction.physicMaterial.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 2100000
