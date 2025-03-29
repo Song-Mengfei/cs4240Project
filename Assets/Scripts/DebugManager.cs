@@ -12,7 +12,7 @@ public class DebugManager : SingletonPatternPersistent<DebugManager>
 
         if (Instance.debugText != null)
         {
-            int maxLines = 5; // Adjust as needed
+            int maxLines = 10; // Adjust as needed
             string[] lines = Instance.debugText.text.Split('\n');
             if (lines.Length >= maxLines)
             {
