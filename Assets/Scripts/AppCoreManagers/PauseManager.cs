@@ -13,4 +13,16 @@ public class PauseManager : SingletonPattern<PauseManager>
     {
         
     }
+
+    // Pause all audio sources
+    void PauseAll()
+    {
+        AudioListener.pause = true;
+    }
+
+    // Resume all audio sources
+    void ResumeAll() 
+    {
+        AudioListener.pause = false;
+    }
 }
