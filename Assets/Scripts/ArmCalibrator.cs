@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class ArmCalibration : MonoBehaviour
 {
     public GameObject otherController;
+    public GameObject head;
     public InputActionReference recordAction;
 
     private Vector3 elbowMarker;
@@ -33,10 +34,18 @@ public class ArmCalibration : MonoBehaviour
             recordShoulder();
             calibrationStep++;
         }
-        else if (calibrationStep == 2 && otherController.name == "Left") 
+        else if (calibrationStep == 2) 
         {
-            recordOtherShoulder();
+            if (otherController.name == "Left")
+            {
+                recordOtherShoulder();
+            }
+            else if (otherController.name == "Right")
+            {
+                recordHeight();
+            }
             calibrationStep++;
+
         }
     }
 
@@ -76,6 +85,15 @@ public class ArmCalibration : MonoBehaviour
 
         DebugManager.Log($"shoulder length is: {shoulderLength}");
         PlayerPrefs.SetFloat("ShoulderLength", shoulderLength);
+        PlayerPrefs.Save();
+    }
+
+    private void recordHeight()
+    {
+        float headMarker = head.transform.position.y;
+
+        DebugManager.Log($"head height is: {headMarker}");
+        PlayerPrefs.SetFloat("HeadHeight", headMarker);
         PlayerPrefs.Save();
     }
 }
