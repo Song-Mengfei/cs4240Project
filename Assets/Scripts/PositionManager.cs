@@ -42,10 +42,10 @@ public class PositionManager : MonoBehaviour
     void OnRecordPormed(InputAction.CallbackContext ctx)
     {
         DebugManager.Log("headPos: " + headPos);
-        DebugManager.Log("headRot: " + headRot);
-        DebugManager.Log("leftPos: " + leftControllerPos);
-        DebugManager.Log("leftRot: " + leftControllerRot);
-        DebugManager.Log("rightPos: " + rightControllerPos);
-        DebugManager.Log("rightRot: " + rightControllerRot);
+        //DebugManager.Log("headRot: " + headRot);
+        //DebugManager.Log("leftPos: " + leftControllerPos);
+        //DebugManager.Log("leftRot: " + leftControllerRot);
+        //DebugManager.Log("rightPos: " + rightControllerPos);
+        //DebugManager.Log("rightRot: " + rightControllerRot);
     }
 }

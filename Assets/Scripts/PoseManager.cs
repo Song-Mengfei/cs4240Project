@@ -9,15 +9,16 @@ public class PoseManager : SingletonPatternPersistent<PoseManager>
 
     public bool CheckPose(Vector3 _headPos, Vector3 _leftHandPos, Vector3 _rightHandPos, Quaternion _headRot, Quaternion _leftHandRot, Quaternion _rightHandRot)
     {
+        currPose.init();
         bool isCorrect = currPose.IsCorrct(_headPos, _leftHandPos, _rightHandPos, _headRot, _leftHandRot, _rightHandRot);
-        if (isCorrect)
-        {
-            DebugManager.Log("good job!");
-        }
-        else
-        {
-            DebugManager.Log("bad boy!");
-        }
+        //if (isCorrect)
+        //{
+        //    DebugManager.Log("good job!");
+        //}
+        //else
+        //{
+        //    DebugManager.Log("bad boy!");
+        //}
         return isCorrect;
     }
 
