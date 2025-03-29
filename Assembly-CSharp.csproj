@@ -66,7 +66,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_TextEventHandler.cs" />
-    <Compile Include="Assets/Meditation.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/EnvMapAnimator.cs" />
     <Compile Include="Assets/Raygeas/Shared Assets/Scripts/WindSettings.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_TextSelector_A.cs" />
@@ -90,6 +89,7 @@
     <Compile Include="Assets/Scripts/Buttons/EnvironmentButton.cs" />
     <Compile Include="Assets/Scripts/Poses/Pose.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_TextSelector_B.cs" />
+    <Compile Include="Assets/Scripts/Meditation/Meditation.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/SkewTextExample.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/WarpTextExample.cs" />
     <Compile Include="Assets/Scripts/AppCoreManagers/SettingsManager.cs" />
@@ -97,10 +97,9 @@
     <Compile Include="Assets/Suntail Village/Scripts/PlayerController.cs" />
     <Compile Include="Assets/Suntail Village/Scripts/AudioZoneControl.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/TMP_TextInfoDebugTool.cs" />
-    <Compile Include="Assets/NightModeSwitcher.cs" />
     <Compile Include="Assets/HIGHLANDS - Stylized Environment/Scripts/PlayerInteractions.cs" />
+    <Compile Include="Assets/Scripts/Meditation/NightModeSwitcher.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/VertexShakeA.cs" />
-    <Compile Include="Assets/MeditationVisualizer.cs" />
     <Compile Include="Assets/HIGHLANDS - Stylized Environment/Scripts/CloudMover.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/Benchmark01_UGUI.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/SimpleScript.cs" />
@@ -127,6 +126,7 @@
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/DropdownSample.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/VertexColorCycler.cs" />
     <Compile Include="Assets/Scripts/ScreensManager.cs" />
+    <Compile Include="Assets/Scripts/Meditation/MeditationVisualizer.cs" />
     <Compile Include="Assets/Raygeas/Shared Assets/Scripts/PlayerInteractions.cs" />
     <Compile Include="Assets/Scripts/Buttons/LessonButton.cs" />
     <Compile Include="Assets/TextMesh Pro/Examples &amp; Extras/Scripts/ObjectSpin.cs" />
