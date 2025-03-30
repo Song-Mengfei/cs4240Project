@@ -5,34 +5,38 @@ using TMPro;
 public class InstructionBoard : MonoBehaviour
 {
     public LessonSO[] lessonSOs; // Array of lesson scriptable objects
-    public Image poseImageUI;
+    [SerializeField]
+    private int currentStep = 0;
+    [SerializeField]
+    private int currLessonNum = 0;
+
+    // Instructions related variables
+    public GameObject instructionElements;
     public TMP_Text instructionTextUI;
     public TMP_Text instructionTitleUI;
-    public Button nextButton;
-    public Button startButton;
+    public TMP_Text nextButtonTextUI;
 
-    public GameObject lessonPanel;
-    public GameObject poseModel;
-
-    private int currentStep = 0;
+    // Lesson related variables
+    //public GameObject poseModel;
+    public GameObject lessonElements;
+    public Image poseImageUI;
     public ProgressBarFiller progressBarFiller;
-    
 
     void Start()
     {
-        startButton.gameObject.SetActive(false); // Hide start button initially
-        HideOtherPanels(); 
-        UpdateInstruction();
+        HideAll();
+        ShowInstructionsUI();
+        currLessonNum = UserStatsManager.Instance.GetCurrLessonNumber();
+        nextButtonTextUI.text = "Next";
 
-        startButton.onClick.AddListener(StartLesson);
+        UpdateInstruction();
     }
 
     public void NextStep()
     {
-        if (currentStep >= lessonSOs.Length - 1)
+        if (currentStep >= lessonSOs[currLessonNum].instructionsSOs.Length - 1)
         {
-            nextButton.gameObject.SetActive(false); // Hide Next button
-            startButton.gameObject.SetActive(true); // Show Start button
+            StartLesson();
             return; // Exit function to prevent out-of-bounds issue
         }
 
@@ -40,17 +44,15 @@ public class InstructionBoard : MonoBehaviour
         UpdateInstruction();
 
         //After updating, check if it's the last step and switch buttons
-        if (currentStep == lessonSOs.Length - 1)
+        if (currentStep == lessonSOs[currLessonNum].instructionsSOs.Length - 1)
         {
-            nextButton.gameObject.SetActive(false);
-            startButton.gameObject.SetActive(true);
+            nextButtonTextUI.text = "Start";
         }
     }
 
 
     void UpdateInstruction()
     {
-        int currLessonNum = UserStatsManager.Instance.GetCurrLessonNumber();
         instructionTitleUI.text = lessonSOs[currLessonNum].instructionsSOs[currentStep].instructionTitle;
         instructionTextUI.text = lessonSOs[currLessonNum].instructionsSOs[currentStep].instructionText;
         poseImageUI.sprite = lessonSOs[currLessonNum].instructionsSOs[currentStep].poseImage;
@@ -58,8 +60,8 @@ public class InstructionBoard : MonoBehaviour
 
     public void StartLesson()
     {
-        gameObject.SetActive(false); // Hide instruction panel
-        ShowOtherPanels(); 
+        HideAll();
+        ShowLessonUI(); 
 
         if (progressBarFiller != null)
         {
@@ -67,17 +69,23 @@ public class InstructionBoard : MonoBehaviour
         }
     }
 
-    void HideOtherPanels()
+    void HideAll()
     {
-        if (lessonPanel != null) lessonPanel.SetActive(false);
-        poseModel.SetActive(false);
+        lessonElements.SetActive(false);
+        instructionElements.SetActive(false);
+        //poseModel.SetActive(false);
 
     }
 
-    void ShowOtherPanels()
+    void ShowInstructionsUI()
     {
-        if (lessonPanel != null) lessonPanel.SetActive(true);
-        if (poseModel != null) poseModel.SetActive(true);
+        instructionElements.SetActive(true);
+    }
+
+    void ShowLessonUI()
+    {
+        lessonElements.SetActive(true);
+        //if (poseModel != null) poseModel.SetActive(true);
     }
 }
 
