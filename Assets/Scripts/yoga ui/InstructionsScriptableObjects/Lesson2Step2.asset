@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 788ddbba8f5f73d439aeb95ff2d0bb32, type: 3}
   m_Name: Lesson2Step2
   m_EditorClassIdentifier: 
-  instructionTitle: Instruction_title2_2
-  instructionText: Instruction_text2_2
+  instructionTitle: Yoga Pose - Pranamasana
+  instructionText: 'Step 1: Stand tall with your feet together, engaging your legs
+    and core while aligning your spine.'
   poseImage: {fileID: 21300000, guid: 1811ea045d82a4021b0ca1b563be4ce1, type: 3}
