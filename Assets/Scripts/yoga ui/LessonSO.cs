@@ -4,4 +4,5 @@ using UnityEngine;
 public class LessonSO : ScriptableObject
 {
     public InstructionsSO[] instructionsSOs;
+    public GameObject lessonPoseModelPrefab;
 }

@@ -17,7 +17,7 @@ public class InstructionBoard : MonoBehaviour
     public TMP_Text nextButtonTextUI;
 
     // Lesson related variables
-    //public GameObject poseModel;
+    public GameObject poseModel;
     public GameObject lessonElements;
     public Image poseImageUI;
     public ProgressBarFiller progressBarFiller;
@@ -27,9 +27,11 @@ public class InstructionBoard : MonoBehaviour
         HideAll();
         ShowInstructionsUI();
         currLessonNum = UserStatsManager.Instance.GetCurrLessonNumber();
+        Debug.Log(currLessonNum);
         nextButtonTextUI.text = "Next";
 
         UpdateInstruction();
+        UpdateLesson();
     }
 
     public void NextStep()
@@ -57,6 +59,10 @@ public class InstructionBoard : MonoBehaviour
         instructionTextUI.text = lessonSOs[currLessonNum].instructionsSOs[currentStep].instructionText;
         poseImageUI.sprite = lessonSOs[currLessonNum].instructionsSOs[currentStep].poseImage;
     }
+    void UpdateLesson()
+    {
+        poseModel = lessonSOs[currLessonNum].lessonPoseModelPrefab;
+    }
 
     public void StartLesson()
     {
@@ -73,7 +79,6 @@ public class InstructionBoard : MonoBehaviour
     {
         lessonElements.SetActive(false);
         instructionElements.SetActive(false);
-        //poseModel.SetActive(false);
 
     }
 
@@ -85,7 +90,6 @@ public class InstructionBoard : MonoBehaviour
     void ShowLessonUI()
     {
         lessonElements.SetActive(true);
-        //if (poseModel != null) poseModel.SetActive(true);
     }
 }
 

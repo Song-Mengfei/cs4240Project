@@ -13,6 +13,7 @@ public class UserStatsManager : SingletonPatternPersistent<UserStatsManager>
         currLessonNumber = _currLessonNumber;
         return true;
     }
+    [SerializeField]
     private int latestLessonCompleted;
     public int GetlatestLessonCompleted() { return latestLessonCompleted; }
     public void SetlatestLessonCompleted(int _latestLessonCompleted) { latestLessonCompleted = _latestLessonCompleted; }
