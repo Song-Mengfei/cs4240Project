@@ -72,8 +72,3 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
-Assets/XR/Settings/OpenXR Package Settings.asset
-ProjectSettings/EditorBuildSettings.asset
-ProjectSettings/ShaderGraphSettings.asset
-Unity.XR.Interaction.Toolkit.Samples.StarterAssets.csproj
-Unity.XR.Interaction.Toolkit.Samples.StarterAssets.Editor.csproj
