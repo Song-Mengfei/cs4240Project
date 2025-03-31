@@ -77,4 +77,3 @@ ProjectSettings/EditorBuildSettings.asset
 ProjectSettings/ShaderGraphSettings.asset
 Unity.XR.Interaction.Toolkit.Samples.StarterAssets.csproj
 Unity.XR.Interaction.Toolkit.Samples.StarterAssets.Editor.csproj
-*.asset
