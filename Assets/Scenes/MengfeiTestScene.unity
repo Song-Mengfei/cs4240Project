@@ -22727,6 +22727,67 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 569180735}
   m_Mesh: {fileID: -5353721164296124591, guid: 34fcea3c30ac5b9428e13f370e7a302d, type: 3}
+--- !u!1001 &572877764
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1400235445451401978, guid: 74a15b60514b8d74fb7ebeb6e289646d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -59.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400235445451401978, guid: 74a15b60514b8d74fb7ebeb6e289646d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400235445451401978, guid: 74a15b60514b8d74fb7ebeb6e289646d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400235445451401978, guid: 74a15b60514b8d74fb7ebeb6e289646d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400235445451401978, guid: 74a15b60514b8d74fb7ebeb6e289646d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400235445451401978, guid: 74a15b60514b8d74fb7ebeb6e289646d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400235445451401978, guid: 74a15b60514b8d74fb7ebeb6e289646d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400235445451401978, guid: 74a15b60514b8d74fb7ebeb6e289646d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400235445451401978, guid: 74a15b60514b8d74fb7ebeb6e289646d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1400235445451401978, guid: 74a15b60514b8d74fb7ebeb6e289646d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2792199881889130534, guid: 74a15b60514b8d74fb7ebeb6e289646d, type: 3}
+      propertyPath: m_Name
+      value: Snowy Mountain
+      objectReference: {fileID: 0}
+    - target: {fileID: 2792199881889130534, guid: 74a15b60514b8d74fb7ebeb6e289646d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 74a15b60514b8d74fb7ebeb6e289646d, type: 3}
 --- !u!1 &573484337
 GameObject:
   m_ObjectHideFlags: 0
@@ -28644,6 +28705,63 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 726612798}
   m_Mesh: {fileID: -5353721164296124591, guid: 34fcea3c30ac5b9428e13f370e7a302d, type: 3}
+--- !u!1001 &726668500
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3553500594210338600, guid: 26c7313625024944e86d3853692e2343, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 114.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3553500594210338600, guid: 26c7313625024944e86d3853692e2343, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3553500594210338600, guid: 26c7313625024944e86d3853692e2343, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 63.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3553500594210338600, guid: 26c7313625024944e86d3853692e2343, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3553500594210338600, guid: 26c7313625024944e86d3853692e2343, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3553500594210338600, guid: 26c7313625024944e86d3853692e2343, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3553500594210338600, guid: 26c7313625024944e86d3853692e2343, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3553500594210338600, guid: 26c7313625024944e86d3853692e2343, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3553500594210338600, guid: 26c7313625024944e86d3853692e2343, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3553500594210338600, guid: 26c7313625024944e86d3853692e2343, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025776082820436253, guid: 26c7313625024944e86d3853692e2343, type: 3}
+      propertyPath: m_Name
+      value: Waterfall
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 26c7313625024944e86d3853692e2343, type: 3}
 --- !u!1 &731569951
 GameObject:
   m_ObjectHideFlags: 0
@@ -78110,7 +78228,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1902697546
 Transform:
   m_ObjectHideFlags: 0
@@ -86175,6 +86293,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currPose: {fileID: 5550777724351792898, guid: 10e2dede59b77cd44a1ac019a09d989f, type: 3}
   poses: []
+  isPoseCorrect: 0
 --- !u!114 &2053941931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90278,3 +90397,5 @@ SceneRoots:
   - {fileID: 1771688871}
   - {fileID: 1902697546}
   - {fileID: 947932525}
+  - {fileID: 726668500}
+  - {fileID: 572877764}
