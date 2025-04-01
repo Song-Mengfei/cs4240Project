@@ -29,7 +29,15 @@ public class InstructionBoard : MonoBehaviour
     {
         HideAll();
         ShowInstructionsUI();
-        currLessonNum = UserStatsManager.Instance.GetCurrLessonNumber();
+        if (UserStatsManager.Instance == null)
+        {
+            Debug.Log("InstructionBoard.cs, Start(), #1");
+            currLessonNum = 0;
+        }
+        else
+        {
+            currLessonNum = UserStatsManager.Instance.GetCurrLessonNumber();
+        }   
         Debug.Log(currLessonNum);
         nextButtonTextUI.text = "Next";
 

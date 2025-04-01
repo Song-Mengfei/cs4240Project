@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PositionManager : SingletonPatternPersistent<PositionManager>
+public class PositionManager : SingletonPattern<PositionManager>
 {
     public InputActionReference recordAction;
 
@@ -20,27 +20,33 @@ public class PositionManager : SingletonPatternPersistent<PositionManager>
 
     void Start()
     {
-        recordAction.action.Enable();
-        recordAction.action.performed += OnRecordPormed;
 
-        armGeneration = GetComponent<ArmGeneration>();
-        poseManager = PoseManager.Instance;
-        //progressBarFiller = GetComponent<ProgressBarFiller>();
+        //recordAction.action.Enable();
+        //recordAction.action.performed += OnRecordPormed;
+
+        //armGeneration = GetComponent<ArmGeneration>();
+        //poseManager = PoseManager.Instance;
+        
+        
+        ////progressBarFiller = GetComponent<ProgressBarFiller>();
     }
 
     void Update()
     {
-        headPos = head.transform.position;
-        leftControllerPos = leftHand.transform.position;
-        rightControllerPos = rightHand.transform.position;
+        //headPos = head.transform.position;
+        //leftControllerPos = leftHand.transform.position;
+        //rightControllerPos = rightHand.transform.position;
 
-        headRot = head.transform.rotation;
-        leftControllerRot = leftHand.transform.rotation;
-        rightControllerRot = rightHand.transform.rotation;
+        //headRot = head.transform.rotation;
+        //leftControllerRot = leftHand.transform.rotation;
+        //rightControllerRot = rightHand.transform.rotation;
 
-        armGeneration.GenerateArms(headPos, leftControllerPos, rightControllerPos, headRot, leftControllerRot, rightControllerRot);
-        isCorrect = poseManager.CheckPose(headPos, leftControllerPos, rightControllerPos, headRot, leftControllerRot, rightControllerRot);
-        //progressBarFiller.FillAmount(isCorrect);
+        //armGeneration.GenerateArms(headPos, leftControllerPos, rightControllerPos, headRot, leftControllerRot, rightControllerRot);
+        //isCorrect = poseManager.CheckPose(headPos, leftControllerPos, rightControllerPos, headRot, leftControllerRot, rightControllerRot);
+
+
+
+        ////progressBarFiller.FillAmount(isCorrect);
     }
 
     public bool IsPoseCorrect()
