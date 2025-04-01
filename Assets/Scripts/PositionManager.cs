@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PositionManager : MonoBehaviour
+public class PositionManager : SingletonPatternPersistent<PositionManager>
 {
     public InputActionReference recordAction;
 
@@ -10,11 +10,13 @@ public class PositionManager : MonoBehaviour
     public GameObject rightHand;
     public GameObject cylinderPrefab;
 
+    private bool isCorrect;
     private Vector3 headPos, leftControllerPos, rightControllerPos;
     private Quaternion headRot, leftControllerRot, rightControllerRot;
 
     private ArmGeneration armGeneration;
     private PoseManager poseManager;
+    //private ProgressBarFiller progressBarFiller;
 
     void Start()
     {
@@ -23,6 +25,7 @@ public class PositionManager : MonoBehaviour
 
         armGeneration = GetComponent<ArmGeneration>();
         poseManager = PoseManager.Instance;
+        //progressBarFiller = GetComponent<ProgressBarFiller>();
     }
 
     void Update()
@@ -36,8 +39,16 @@ public class PositionManager : MonoBehaviour
         rightControllerRot = rightHand.transform.rotation;
 
         armGeneration.GenerateArms(headPos, leftControllerPos, rightControllerPos, headRot, leftControllerRot, rightControllerRot);
-        poseManager.CheckPose(headPos, leftControllerPos, rightControllerPos, headRot, leftControllerRot, rightControllerRot);
+        isCorrect = poseManager.CheckPose(headPos, leftControllerPos, rightControllerPos, headRot, leftControllerRot, rightControllerRot);
+        //progressBarFiller.FillAmount(isCorrect);
     }
+
+    public bool IsPoseCorrect()
+    {
+        return isCorrect;
+    }
+
+    
 
     void OnRecordPormed(InputAction.CallbackContext ctx)
     {

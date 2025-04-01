@@ -9,26 +9,29 @@ public class ProgressBarFiller : MonoBehaviour
     public float decreaseSpeed = 0.3f;
     [SerializeField] private bool canFill = false;
 
+    private PositionManager positionManager;
+
     void Start()
     {
         progressFill.fillAmount = 0f; // Start at 0
+        positionManager = PositionManager.Instance;
     }
 
     void Update()
     {
         if (!canFill) return; // Only update if lesson has started
 
-        if (PoseManager.Instance.IsPoseCorrect())
+        if (positionManager.IsPoseCorrect())
         {
             progressFill.fillAmount = Mathf.Clamp01(progressFill.fillAmount + Time.deltaTime * fillSpeed);
         }
         else
         {
+            Debug.Log("not correct");
             progressFill.fillAmount = Mathf.Clamp01(progressFill.fillAmount - Time.deltaTime * decreaseSpeed);
         }
-
-
     }
+
 
     public void StartLesson()
     {
