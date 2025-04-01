@@ -8,8 +8,10 @@ public class ProgressBarFiller : MonoBehaviour
     public float fillSpeed = 0.5f; // Speed at which the bar fills
     public float decreaseSpeed = 0.3f;
     [SerializeField] private bool canFill = false;
+    public bool isProgressFullyFilled = false;
 
     private PositionManager positionManager;
+    public InstructionBoard ib;
 
     void Start()
     {
@@ -20,10 +22,17 @@ public class ProgressBarFiller : MonoBehaviour
     void Update()
     {
         if (!canFill) return; // Only update if lesson has started
+        if (isProgressFullyFilled) return; // No need to do anything anymore once fully filled
 
         if (positionManager.IsPoseCorrect())
         {
             progressFill.fillAmount = Mathf.Clamp01(progressFill.fillAmount + Time.deltaTime * fillSpeed);
+
+            if (progressFill.fillAmount == 1)
+            {
+                isProgressFullyFilled = true;
+                ib.FullyFilled();
+            }
         }
         else
         {
@@ -38,6 +47,7 @@ public class ProgressBarFiller : MonoBehaviour
         // Start filling the progress bar when the lesson starts
         progressFill.fillAmount = 0f;
         canFill = true;
+        isProgressFullyFilled = false;
         // IncreaseProgress(1f); // Set the target to fill completely
     }
 }
