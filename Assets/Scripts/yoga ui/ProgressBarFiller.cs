@@ -24,7 +24,7 @@ public class ProgressBarFiller : MonoBehaviour
         if (!canFill) return; // Only update if lesson has started
         if (isProgressFullyFilled) return; // No need to do anything anymore once fully filled
 
-        if (positionManager.IsPoseCorrect())
+        if (positionManager.IsPoseCorrect() || true)
         {
             progressFill.fillAmount = Mathf.Clamp01(progressFill.fillAmount + Time.deltaTime * fillSpeed);
 
