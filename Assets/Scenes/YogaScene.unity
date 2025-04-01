@@ -16039,7 +16039,7 @@ PrefabInstance:
     - target: {fileID: 6399122978770788102, guid: b0224d07a77a70c4d8267aa23a894844, type: 3}
       propertyPath: currPose
       value: 
-      objectReference: {fileID: 6789764467458358626, guid: 10e2dede59b77cd44a1ac019a09d989f, type: 3}
+      objectReference: {fileID: 5550777724351792898, guid: 10e2dede59b77cd44a1ac019a09d989f, type: 3}
     - target: {fileID: 6399122978770788102, guid: b0224d07a77a70c4d8267aa23a894844, type: 3}
       propertyPath: poses.Array.size
       value: 0
@@ -16132,7 +16132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ddccc113a252a940b9c1fa98a790fc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currPose: {fileID: 5550777724351792898, guid: 10e2dede59b77cd44a1ac019a09d989f, type: 3}
+  currPose: {fileID: 3887318598035862416, guid: f5dcee5f98f7bc342a8ad2881e80f4a4, type: 3}
   poses: []
   isPoseCorrect: 0
 --- !u!1001 &1451351828

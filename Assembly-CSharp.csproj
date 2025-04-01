@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\DebugManager.cs" />
     <Compile Include="Assets\Scripts\yoga ui\InstructionsSO.cs" />
     <Compile Include="Assets\Suntail Village\Scripts\SuntailStartDemo.cs" />
+    <Compile Include="Assets\Scripts\Poses\BurmesePose.cs" />
     <Compile Include="Assets\Scripts\yoga ui\InstructionBoard.cs" />
     <Compile Include="Assets\Raygeas\Shared Assets\Scripts\PhysicsObject.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
