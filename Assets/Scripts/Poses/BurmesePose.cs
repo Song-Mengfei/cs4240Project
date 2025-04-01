@@ -64,7 +64,7 @@ public class BurmesePose : Pose
     {
         float distance = headPos.y - rightPos.y;
 
-        bool areHandsSymmetry = distance < upperArmLength + 0.1f || distance > upperArmLength - 0.1f;
+        bool areHandsSymmetry = distance < upperArmLength + 0.05f || distance > upperArmLength - 0.05f;
 
         if (areHandsSymmetry)
         {
