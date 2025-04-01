@@ -12413,7 +12413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01f5dd9fafff7db4da1c131625b3c74f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fader: {fileID: 0}
+  fader: {fileID: 1955169203}
 --- !u!4 &1771688879 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4720474804352221578, guid: b0224d07a77a70c4d8267aa23a894844, type: 3}

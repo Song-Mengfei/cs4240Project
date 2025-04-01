@@ -43,5 +43,9 @@ public class OurSceneManager : SingletonPatternPersistent<OurSceneManager>
         }
 
         op.allowSceneActivation = true;
+        yield return new WaitForSeconds(0.1f);
+
+        fader = Camera.main.GetComponentInChildren<SceneTransitionFader>();
+        fader.FadeIn();
     }
 }
