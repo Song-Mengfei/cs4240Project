@@ -22,11 +22,12 @@ public class UserStatsManager : SingletonPatternPersistent<UserStatsManager>
     public int GetCurrEnvironmentNumber() { return currEnvironmentNumber; }
     public bool SetCurrEnvironmentNumber(int _currEnvironmentNumber)
     {
-        if (_currEnvironmentNumber > latestEnvironmentUnlocked)
-        {
-            return false;
-        }
-        currLessonNumber = _currEnvironmentNumber;
+        // if (_currEnvironmentNumber > latestEnvironmentUnlocked)
+        // {
+        //     return false;
+        // }
+        // this will be checked in EnvironmentButton.cs
+        currEnvironmentNumber = _currEnvironmentNumber;
         return true;
     }
     private int latestEnvironmentUnlocked;
