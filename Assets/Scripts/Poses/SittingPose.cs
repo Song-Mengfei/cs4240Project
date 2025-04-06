@@ -30,7 +30,11 @@ public class SittingPose : Pose
         bool isHeadStraight = Mathf.Abs(euler.x) <= 10f && Mathf.Abs(euler.z) <= 10f;
 
         if (isHeadStraight) {
-            DebugManager.Log("HeadStraight");
+            Debug.Log("HeadStraight");
+        }
+        else
+        {
+            Debug.Log("notHeadStraight");
         }
         return isHeadStraight;
     }
@@ -43,7 +47,10 @@ public class SittingPose : Pose
 
         if (areHandsTogether)
         {
-            DebugManager.Log("HandsTogether");
+            Debug.Log("HandsTogether");
+        }
+        else {
+            Debug.Log("notHandsTogether");
         }
 
         return areHandsTogether;
@@ -60,7 +67,11 @@ public class SittingPose : Pose
 
         if (areArmsStraight)
         {
-            DebugManager.Log("ArmsStraight");
+            Debug.Log("ArmsStraight");
+        }
+        else
+        {
+            Debug.Log("notArmsStraight");
         }
         return areArmsStraight;
     }
@@ -71,11 +82,11 @@ public class SittingPose : Pose
 
         if (isSitting)
         {
-            DebugManager.Log("Sitting");
+            Debug.Log("Sitting");
         }
         else
         {
-            DebugManager.Log("headOrigin: " + headOrigin + "now: " + headPos.y);
+            Debug.Log("headOrigin: " + headOrigin + "now: " + headPos.y);
         }
 
         return isSitting;

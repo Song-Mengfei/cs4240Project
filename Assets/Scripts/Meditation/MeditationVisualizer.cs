@@ -86,7 +86,7 @@ public class MeditationVisualizer : MonoBehaviour
             float average = sum / numSamples;
             
             // Use the audio amplitude to drive the shape (scale)
-            float inputValue = average * scaleMultiplier * 2.0f; // Adjust multiplier as necessary
+            float inputValue = average * scaleMultiplier * 10f; // Adjust multiplier as necessary
             float curveValue = abstractScaleCurve.Evaluate(inputValue);
             smoothedScaleFactor = Mathf.Lerp(smoothedScaleFactor, curveValue, smoothingSpeed * Time.deltaTime);
             transform.localScale = visualizerInitialScale * smoothedScaleFactor;

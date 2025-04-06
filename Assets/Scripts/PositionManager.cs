@@ -1,7 +1,8 @@
+using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PositionManager : MonoBehaviour
+public class PositionManager : SingletonPattern<PositionManager>
 {
     public InputActionReference recordAction;
 
@@ -10,19 +11,29 @@ public class PositionManager : MonoBehaviour
     public GameObject rightHand;
     public GameObject cylinderPrefab;
 
+    private bool isCorrect;
     private Vector3 headPos, leftControllerPos, rightControllerPos;
     private Quaternion headRot, leftControllerRot, rightControllerRot;
 
     private ArmGeneration armGeneration;
     private PoseManager poseManager;
+    //private ProgressBarFiller progressBarFiller;
 
     void Start()
     {
+        // Init
+        head = Camera.main.gameObject;
+        GameObject goRef = head.GetComponentInParent<XROrigin>().gameObject;
+        leftHand = goRef.GetComponentInChildren<LeftHandRef>().gameObject;
+        rightHand = goRef.GetComponentInChildren<RightHandRef>().gameObject;
+
         recordAction.action.Enable();
         recordAction.action.performed += OnRecordPormed;
 
         armGeneration = GetComponent<ArmGeneration>();
         poseManager = PoseManager.Instance;
+
+        //progressBarFiller = GetComponent<ProgressBarFiller>();
     }
 
     void Update()
@@ -36,8 +47,19 @@ public class PositionManager : MonoBehaviour
         rightControllerRot = rightHand.transform.rotation;
 
         armGeneration.GenerateArms(headPos, leftControllerPos, rightControllerPos, headRot, leftControllerRot, rightControllerRot);
-        poseManager.CheckPose(headPos, leftControllerPos, rightControllerPos, headRot, leftControllerRot, rightControllerRot);
+        isCorrect = poseManager.CheckPose(headPos, leftControllerPos, rightControllerPos, headRot, leftControllerRot, rightControllerRot);
+
+
+
+        //progressBarFiller.FillAmount(isCorrect);
     }
+
+    public bool IsPoseCorrect()
+    {
+        return isCorrect;
+    }
+
+    
 
     void OnRecordPormed(InputAction.CallbackContext ctx)
     {

@@ -20,6 +20,10 @@ public class OurSceneManager : SingletonPatternPersistent<OurSceneManager>
     {
         LoadSceneAsync("YogaScene");
     }
+    public void LoadSettingScene()
+    {
+        LoadSceneAsync("SettingScene");
+    }
 
     public void LoadSceneAsync(string sceneStr)
     {
@@ -43,5 +47,9 @@ public class OurSceneManager : SingletonPatternPersistent<OurSceneManager>
         }
 
         op.allowSceneActivation = true;
+        yield return new WaitForSeconds(0.1f);
+
+        fader = Camera.main.GetComponentInChildren<SceneTransitionFader>();
+        fader.FadeIn();
     }
 }

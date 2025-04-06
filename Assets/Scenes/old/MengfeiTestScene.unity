@@ -22781,7 +22781,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2792199881889130534, guid: 74a15b60514b8d74fb7ebeb6e289646d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -28756,6 +28756,10 @@ PrefabInstance:
     - target: {fileID: 5025776082820436253, guid: 26c7313625024944e86d3853692e2343, type: 3}
       propertyPath: m_Name
       value: Waterfall
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025776082820436253, guid: 26c7313625024944e86d3853692e2343, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -38520,6 +38524,10 @@ PrefabInstance:
     - target: {fileID: 2218496723442559054, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
       propertyPath: m_Name
       value: XR Origin (XR Rig)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2218496723442559054, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6355494128053973299, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
       propertyPath: m_IsActive
@@ -72640,13 +72648,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5481745143554257255, guid: b0224d07a77a70c4d8267aa23a894844, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2053941929}
-    - targetCorrespondingSourceObject: {fileID: 5481745143554257255, guid: b0224d07a77a70c4d8267aa23a894844, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 2053941930}
-    - targetCorrespondingSourceObject: {fileID: 5481745143554257255, guid: b0224d07a77a70c4d8267aa23a894844, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2053941931}
   m_SourcePrefab: {fileID: 100100000, guid: b0224d07a77a70c4d8267aa23a894844, type: 3}
 --- !u!1 &1772875167
 GameObject:
@@ -86262,23 +86264,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5481745143554257255, guid: b0224d07a77a70c4d8267aa23a894844, type: 3}
   m_PrefabInstance: {fileID: 1771688871}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2053941929
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2053941921}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61469a6e99c1ef446bf72a04b8875917, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  recordAction: {fileID: 83097790271614945, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  head: {fileID: 947932528}
-  leftHand: {fileID: 600322367}
-  rightHand: {fileID: 600322366}
-  cylinderPrefab: {fileID: 4516944188995070907, guid: 99d44acb9f13a0148a049ede5c50dc64, type: 3}
 --- !u!114 &2053941930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86294,19 +86279,6 @@ MonoBehaviour:
   currPose: {fileID: 5550777724351792898, guid: 10e2dede59b77cd44a1ac019a09d989f, type: 3}
   poses: []
   isPoseCorrect: 0
---- !u!114 &2053941931
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2053941921}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fdd00df9f5ed814abcb7909a6e66162, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cylinderPrefab: {fileID: 0}
 --- !u!1 &2055621862
 GameObject:
   m_ObjectHideFlags: 0

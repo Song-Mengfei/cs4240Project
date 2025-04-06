@@ -22,16 +22,29 @@ public class InstructionBoard : MonoBehaviour
     public Image poseImageUI;
     public ProgressBarFiller progressBarFiller;
 
+    // Confirmation screen related variables
+    public GameObject ConfirmationElements;
+
     void Start()
     {
         HideAll();
         ShowInstructionsUI();
-        currLessonNum = UserStatsManager.Instance.GetCurrLessonNumber();
+        if (UserStatsManager.Instance == null)
+        {
+            Debug.Log("InstructionBoard.cs, Start(), #1");
+            currLessonNum = 0;
+        }
+        else
+        {
+            currLessonNum = UserStatsManager.Instance.GetCurrLessonNumber();
+        }   
         Debug.Log(currLessonNum);
         nextButtonTextUI.text = "Next";
 
         UpdateInstruction();
         UpdateLesson();
+
+        progressBarFiller.ib = GetComponent<InstructionBoard>();
     }
 
     public void NextStep()
@@ -79,7 +92,7 @@ public class InstructionBoard : MonoBehaviour
     {
         lessonElements.SetActive(false);
         instructionElements.SetActive(false);
-
+        ConfirmationElements.SetActive(false);
     }
 
     void ShowInstructionsUI()
@@ -90,6 +103,21 @@ public class InstructionBoard : MonoBehaviour
     void ShowLessonUI()
     {
         lessonElements.SetActive(true);
+    }
+
+    void ShowConfirmationUI()
+    {
+        ConfirmationElements.SetActive(true);
+    }
+
+    public void FullyFilled()
+    {
+        HideAll();
+        ShowConfirmationUI();
+    }
+    public void GoToMeditationScene()
+    {
+        OurSceneManager.Instance.LoadMindfullnessScene();
     }
 }
 
