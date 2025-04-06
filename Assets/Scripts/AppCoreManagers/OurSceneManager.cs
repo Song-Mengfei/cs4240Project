@@ -20,6 +20,10 @@ public class OurSceneManager : SingletonPatternPersistent<OurSceneManager>
     {
         LoadSceneAsync("YogaScene");
     }
+    public void LoadSettingScene()
+    {
+        LoadSceneAsync("SettingScene");
+    }
 
     public void LoadSceneAsync(string sceneStr)
     {
