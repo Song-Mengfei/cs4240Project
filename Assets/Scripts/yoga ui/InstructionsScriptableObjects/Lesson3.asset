@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 973e012b2d342c045a793504592099d5, type: 3}
+  m_Name: Lesson3
+  m_EditorClassIdentifier: 
+  instructionsSOs:
+  - {fileID: 11400000, guid: afc0fc5b37c1e425c930f1c04583a068, type: 2}
+  - {fileID: 11400000, guid: c289bf0fec42244389e7f6c8c872aba6, type: 2}
+  - {fileID: 11400000, guid: a6b1e6e5150574477b2fe63483fc6098, type: 2}
+  lessonPoseModelPrefab: {fileID: 3590107468946981520, guid: b379791122efe4acd816393d1d73eb2f, type: 3}
