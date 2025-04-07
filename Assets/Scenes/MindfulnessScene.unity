@@ -398,7 +398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1e94a5bf5264f75acdba1b93f7e169, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meditationClip: {fileID: 8300000, guid: a9efc3c16c422460f8b665904a5a0f29, type: 3}
+  meditationClip: {fileID: 8300000, guid: c092e30fd833e4046944a029906fdcc1, type: 3}
   bgmClip: {fileID: 8300000, guid: b0dfe0222e4c54f1f84562b9bbf9ff86, type: 3}
   meditationDelay: 10
   nightModeSwitcher: {fileID: 0}
