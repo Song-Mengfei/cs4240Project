@@ -15,4 +15,4 @@ MonoBehaviour:
   instructionTitle: Yoga Pose - Pranamasana
   instructionText: 'Great! When you are ready, press the START button to begin our
     lesson! '
-  poseImage: {fileID: 21300000, guid: 1811ea045d82a4021b0ca1b563be4ce1, type: 3}
+  poseImage: {fileID: 21300000, guid: 2673986ad9c524fd1a853929c408ee58, type: 3}

@@ -15,4 +15,4 @@ MonoBehaviour:
   instructionTitle: Yoga Pose - Pranamasana
   instructionText: 'Step 2: Bring your palms together at the heart center, pressing
     them gently with elbows extended outward.  '
-  poseImage: {fileID: 21300000, guid: 1811ea045d82a4021b0ca1b563be4ce1, type: 3}
+  poseImage: {fileID: 21300000, guid: b636a30c6002d4f0c8333d3f2e8fce82, type: 3}
