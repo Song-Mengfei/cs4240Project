@@ -12,9 +12,9 @@ public class Meditation : MonoBehaviour
     private AudioSource meditationSource;
 
     public NightModeSwitcher nightModeSwitcher;
-    public float bgmDefaultVolume = 0.5f;
+    public float bgmDefaultVolume = 0.4f;
     public float bgmLoweredVolume = 0.2f;
-    public float volumeFadeSpeed = 0.6f;
+    public float volumeFadeSpeed = 0.5f;
     
     void Start()
     {
@@ -75,7 +75,7 @@ public class Meditation : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         meditationSource.Play();
-        StartCoroutine(FadeOutBGMAfterMeditation(2f));
+        StartCoroutine(FadeOutBGMAfterMeditation(4f));
     }
 
     IEnumerator FadeOutBGMAfterMeditation(float fadeDuration)
@@ -93,6 +93,8 @@ public class Meditation : MonoBehaviour
         }
         bgmSource.volume = 0f;
         bgmSource.Stop();
+
+        OurSceneManager.Instance.LoadMainScene();
     }
     public AudioSource MeditationSource
     {
