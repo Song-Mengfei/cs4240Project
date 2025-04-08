@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Lesson3
   m_EditorClassIdentifier: 
   instructionsSOs:
+  - {fileID: 11400000, guid: 74e5884ba9e404c5cb59acb7d0ff5c7b, type: 2}
   - {fileID: 11400000, guid: afc0fc5b37c1e425c930f1c04583a068, type: 2}
   - {fileID: 11400000, guid: c289bf0fec42244389e7f6c8c872aba6, type: 2}
   - {fileID: 11400000, guid: a6b1e6e5150574477b2fe63483fc6098, type: 2}
+  - {fileID: 11400000, guid: 75664cff4dfe1491d80c12778d66697b, type: 2}
   lessonPoseModelPrefab: {fileID: 3590107468946981520, guid: b379791122efe4acd816393d1d73eb2f, type: 3}
