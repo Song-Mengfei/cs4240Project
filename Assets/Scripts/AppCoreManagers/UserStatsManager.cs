@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class UserStatsManager : SingletonPatternPersistent<UserStatsManager>
 {
+    [SerializeField]
     private int currLessonNumber;
     public int GetCurrLessonNumber() { return currLessonNumber; }
-    public bool SetCurrLessonNumber(int _currLessonNumber) 
+    public bool SetCurrLessonNumber(int _currLessonNumber)
     {
         if (_currLessonNumber > latestLessonUnlocked)
         {
@@ -13,6 +14,7 @@ public class UserStatsManager : SingletonPatternPersistent<UserStatsManager>
         currLessonNumber = _currLessonNumber;
         return true;
     }
+
     [SerializeField]
     private int latestLessonUnlocked;
     public int GetlatestLessonUnlocked() { return latestLessonUnlocked; }

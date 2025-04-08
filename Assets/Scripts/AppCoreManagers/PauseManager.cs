@@ -3,37 +3,45 @@ using UnityEngine.SceneManagement;
 
 public class PauseManager : SingletonPattern<PauseManager>
 {
-    public GameObject quitPanel;  
+    public GameObject pauseUI;
+    public GameObject pauseButton;
 
     void Start()
     {
-        quitPanel.SetActive(false);  // Ensure the panel is hidden at the start
+        pauseUI.SetActive(false);  // Ensure the PauseUI is hidden at the start
+        pauseButton.SetActive(true);
     }
 
-    public void ShowQuitPanel()
+    public void ShowPauseUI()
     {
-        quitPanel.SetActive(true);  // Show the quit confirmation panel
+        PauseAll();
+        pauseUI.SetActive(true);  // Show the PauseUI
+        pauseButton.SetActive(false);
     }
 
-    public void HideQuitPanel()
+    public void HidePauseUI()
     {
-        quitPanel.SetActive(false);  // Hide the panel
+        ResumeAll();
+        pauseUI.SetActive(false);  // Hide the PauseUI
+        pauseButton.SetActive(true);
     }
 
-    public void QuitLesson()
+    public void GoBackToMainMenu()
     {
-        SceneManager.LoadScene("HomeScene");  // Replace with your actual home scene name
+        OurSceneManager.Instance.LoadMainScene();
     }
 
     // Pause all audio sources
     void PauseAll()
     {
+        Time.timeScale = 0;
         AudioListener.pause = true;
     }
 
     // Resume all audio sources
-    void ResumeAll() 
+    void ResumeAll()
     {
+        Time.timeScale = 1;
         AudioListener.pause = false;
     }
 }

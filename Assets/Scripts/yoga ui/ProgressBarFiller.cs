@@ -5,11 +5,15 @@ using System.Collections;
 public class ProgressBarFiller : MonoBehaviour
 {
     public Image progressFill; // Assign ProgressFill Image in Inspector
-    public float fillSpeed = 0.5f; // Speed at which the bar fills
+    //public float fillSpeed = 0.5f; // Speed at which the bar fills (NO LONGER USING SINCE THERES FIXED TIME)
+    public float durationInSeconds = 10.0f;
     public float decreaseSpeed = 0.3f;
     [SerializeField] private bool canFill = false;
     [SerializeField] private bool debugFastCompleteBool = false;
     public bool isProgressFullyFilled = false;
+
+
+    public float testTimeElapsed = 0.0f;
 
     private PositionManager positionManager;
     public InstructionBoard ib;
@@ -22,12 +26,15 @@ public class ProgressBarFiller : MonoBehaviour
 
     void Update()
     {
+        testTimeElapsed += Time.deltaTime;
+       
+
         if (!canFill) return; // Only update if lesson has started
         if (isProgressFullyFilled) return; // No need to do anything anymore once fully filled
 
         if (positionManager.IsPoseCorrect() || debugFastCompleteBool)
         {
-            progressFill.fillAmount = Mathf.Clamp01(progressFill.fillAmount + Time.deltaTime * fillSpeed);
+            progressFill.fillAmount = Mathf.Clamp01(progressFill.fillAmount + Time.deltaTime / durationInSeconds);
 
             if (progressFill.fillAmount == 1)
             {
@@ -42,7 +49,6 @@ public class ProgressBarFiller : MonoBehaviour
         }
     }
 
-
     public void StartLesson()
     {
         // Start filling the progress bar when the lesson starts
@@ -50,6 +56,12 @@ public class ProgressBarFiller : MonoBehaviour
         canFill = true;
         isProgressFullyFilled = false;
         // IncreaseProgress(1f); // Set the target to fill completely
+    }
+
+    public void StartLesson(float _durationInSeconds)
+    {
+        durationInSeconds = _durationInSeconds;
+        StartLesson();
     }
 }
 

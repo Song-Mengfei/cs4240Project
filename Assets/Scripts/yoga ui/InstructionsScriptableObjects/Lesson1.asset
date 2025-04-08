@@ -12,9 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 973e012b2d342c045a793504592099d5, type: 3}
   m_Name: Lesson1
   m_EditorClassIdentifier: 
-  instructionsSOs:
-  - {fileID: 11400000, guid: ac9d0a8849fccbf4ea12d860a4d75305, type: 2}
-  - {fileID: 11400000, guid: 225efdb5ec0c9274ca412dafb2536c16, type: 2}
-  - {fileID: 11400000, guid: 580d9867fa7e41c4b9bca366b4af7dcc, type: 2}
-  - {fileID: 11400000, guid: e037d5acdf8fc48799a13b6a74f51c9c, type: 2}
-  lessonPoseModelPrefab: {fileID: 2476684452164234548, guid: c73d6766aa238034bbc290c25841c70d, type: 3}
+  PoseSOs:
+  - {fileID: 11400000, guid: fe5626548feb55e4999f15709485b8bf, type: 2}
+  - {fileID: 11400000, guid: 669acd50b07cdd34b9aeb734929968c6, type: 2}

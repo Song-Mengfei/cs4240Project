@@ -8,6 +8,8 @@ public class InstructionBoard : MonoBehaviour
     [SerializeField]
     private int currentStep = 0;
     [SerializeField]
+    private int currLessonPose = 0;
+    [SerializeField]
     private int currLessonNum = 0;
 
     // Instructions related variables
@@ -17,7 +19,7 @@ public class InstructionBoard : MonoBehaviour
     public TMP_Text nextButtonTextUI;
 
     // Lesson related variables
-    public GameObject poseModel;
+    public GameObject[] poseModelRef;
     public Transform poseSpawnTransform;
     public GameObject lessonElements;
     public Image poseImageUI;
@@ -26,31 +28,52 @@ public class InstructionBoard : MonoBehaviour
     // Confirmation screen related variables
     public GameObject ConfirmationElements;
 
+    // Pause related
+    public GameObject pauseUI;
+    public GameObject pauseButton;
+    public GameObject currActiveNonPauseUI; // To set active when unpause
+
+    void PreLoadPoseModels()
+    {
+        int size = lessonSOs[currLessonNum].PoseSOs.Length;
+        poseModelRef = new GameObject[size];
+
+        for (int i = 0; i < size; i++)
+        {
+            poseModelRef[i] = Instantiate(lessonSOs[currLessonNum].PoseSOs[i].lessonPoseModelPrefab, poseSpawnTransform.position, Quaternion.identity, poseSpawnTransform);
+            poseModelRef[i].SetActive(false);
+        }
+    }
+
     void Start()
     {
         HideAll();
         ShowInstructionsUI();
+
         if (UserStatsManager.Instance == null)
         {
-            Debug.Log("InstructionBoard.cs, Start(), #1");
             currLessonNum = 0;
         }
         else
         {
             currLessonNum = UserStatsManager.Instance.GetCurrLessonNumber();
         }   
-        Debug.Log(currLessonNum);
-        nextButtonTextUI.text = "Next";
 
+        // Preload all the pose model gos and then set active when using
+        PreLoadPoseModels();
+
+        // Fill up text in UI
         UpdateInstruction();
         UpdateLesson();
+        nextButtonTextUI.text = "Next";
 
+        // Get reference to progress bar
         progressBarFiller.ib = GetComponent<InstructionBoard>();
     }
 
     public void NextStep()
     {
-        if (currentStep >= lessonSOs[currLessonNum].instructionsSOs.Length - 1)
+        if (currentStep >= lessonSOs[currLessonNum].PoseSOs[currLessonPose].instructionsSOs.Length - 1)
         {
             StartLesson();
             return; // Exit function to prevent out-of-bounds issue
@@ -60,7 +83,7 @@ public class InstructionBoard : MonoBehaviour
         UpdateInstruction();
 
         //After updating, check if it's the last step and switch buttons
-        if (currentStep == lessonSOs[currLessonNum].instructionsSOs.Length - 1)
+        if (currentStep == lessonSOs[currLessonNum].PoseSOs[currLessonPose].instructionsSOs.Length - 1)
         {
             nextButtonTextUI.text = "Start";
         }
@@ -69,14 +92,18 @@ public class InstructionBoard : MonoBehaviour
 
     void UpdateInstruction()
     {
-        instructionTitleUI.text = lessonSOs[currLessonNum].instructionsSOs[currentStep].instructionTitle;
-        instructionTextUI.text = lessonSOs[currLessonNum].instructionsSOs[currentStep].instructionText;
-        poseImageUI.sprite = lessonSOs[currLessonNum].instructionsSOs[currentStep].poseImage;
+        instructionTitleUI.text = lessonSOs[currLessonNum].PoseSOs[currLessonPose].instructionsSOs[currentStep].instructionTitle;
+        instructionTextUI.text = lessonSOs[currLessonNum].PoseSOs[currLessonPose].instructionsSOs[currentStep].instructionText;
+        poseImageUI.sprite = lessonSOs[currLessonNum].PoseSOs[currLessonPose].instructionsSOs[currentStep].poseImage;
     }
     void UpdateLesson()
     {
-        poseModel = lessonSOs[currLessonNum].lessonPoseModelPrefab;
-        Instantiate(poseModel, poseSpawnTransform.position, Quaternion.identity, poseSpawnTransform);
+        if (currLessonPose - 1 >= 0)
+        {
+            poseModelRef[currLessonPose - 1].SetActive(false);
+        }
+
+        poseModelRef[currLessonPose].SetActive(true);
     }
 
     public void StartLesson()
@@ -86,7 +113,7 @@ public class InstructionBoard : MonoBehaviour
 
         if (progressBarFiller != null)
         {
-            progressBarFiller.StartLesson();
+            progressBarFiller.StartLesson(lessonSOs[currLessonNum].PoseSOs[currLessonPose].poseDurationInSeconds);
         }
     }
 
@@ -95,31 +122,78 @@ public class InstructionBoard : MonoBehaviour
         lessonElements.SetActive(false);
         instructionElements.SetActive(false);
         ConfirmationElements.SetActive(false);
+        pauseUI.SetActive(false);
+        pauseButton.SetActive(true);
     }
 
     void ShowInstructionsUI()
     {
         instructionElements.SetActive(true);
+        currActiveNonPauseUI = instructionElements;
     }
 
     void ShowLessonUI()
     {
         lessonElements.SetActive(true);
+        currActiveNonPauseUI = lessonElements;
     }
 
     void ShowConfirmationUI()
     {
         ConfirmationElements.SetActive(true);
+        currActiveNonPauseUI = ConfirmationElements;
     }
 
     public void FullyFilled()
     {
         HideAll();
-        ShowConfirmationUI();
+
+        // Check if it's the last pose
+        if (currLessonPose == lessonSOs.Length - 1)
+        {
+            ShowConfirmationUI();
+        }
+        else
+        {
+            currLessonPose++;
+            currentStep = 0;
+
+            nextButtonTextUI.text = "Next";
+
+            UpdateInstruction();
+            UpdateLesson();
+            ShowInstructionsUI();
+        }
     }
+
     public void GoToMeditationScene()
     {
         OurSceneManager.Instance.LoadMindfullnessScene();
+    }
+
+    public void Pause()
+    {
+        Time.timeScale = 0;
+        AudioListener.pause = true;
+        pauseUI.SetActive(true);
+        pauseButton.SetActive(false);
+        currActiveNonPauseUI.SetActive(false);
+    }
+
+    public void Unpause()
+    {
+        Time.timeScale = 1;
+        AudioListener.pause = false;
+        pauseUI.SetActive(false);
+        pauseButton.SetActive(true);
+        currActiveNonPauseUI.SetActive(true);
+    }
+
+    public void GoToMainMenu()
+    {
+        Time.timeScale = 1;
+        AudioListener.pause = false;
+        OurSceneManager.Instance.LoadMainScene();
     }
 }
 

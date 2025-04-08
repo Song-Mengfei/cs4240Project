@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 788ddbba8f5f73d439aeb95ff2d0bb32, type: 3}
-  m_Name: Lesson3Step3
+  m_Name: YogaWarriorPoseStep2
   m_EditorClassIdentifier: 
   instructionTitle: Yoga Pose - Warrior
-  instructionText: Step 2 - Step your left foot back and angle it slightly outward
-    while keeping your right foot facing forward. Bend your front knee over your
-    ankle.
-  poseImage: {fileID: 21300000, guid: c174adfe145c849668ca01bd5753cd73, type: 3}
+  instructionText: Step 1 - Stand tall with feet together, shoulders relaxed, and
+    arms by your side.
+  poseImage: {fileID: 21300000, guid: b6e8b69d8ff984fe981953ea385e0f90, type: 3}

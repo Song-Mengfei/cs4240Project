@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class OurSceneManager : SingletonPatternPersistent<OurSceneManager>
 {
     public SceneTransitionFader fader;
+    public bool isCurrentlyLoading = false;
 
     public void LoadMainScene()
     {
@@ -27,6 +28,9 @@ public class OurSceneManager : SingletonPatternPersistent<OurSceneManager>
 
     public void LoadSceneAsync(string sceneStr)
     {
+        if (isCurrentlyLoading) return;
+
+        isCurrentlyLoading = true;
         fader = Camera.main.GetComponentInChildren<SceneTransitionFader>();
         StartCoroutine(GoToSceneAsyncCoroutine(sceneStr));
     }
@@ -51,5 +55,6 @@ public class OurSceneManager : SingletonPatternPersistent<OurSceneManager>
 
         fader = Camera.main.GetComponentInChildren<SceneTransitionFader>();
         fader.FadeIn();
+        isCurrentlyLoading = false;
     }
 }

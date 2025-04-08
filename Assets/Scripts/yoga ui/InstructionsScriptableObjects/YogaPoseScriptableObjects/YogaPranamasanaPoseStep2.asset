@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 788ddbba8f5f73d439aeb95ff2d0bb32, type: 3}
-  m_Name: Lesson3Step4
+  m_Name: YogaPranamasanaPoseStep2
   m_EditorClassIdentifier: 
-  instructionTitle: Yoga Pose - Warrior
-  instructionText: Step 3 - Extend both arms parallel to the ground in line with
-    your legs, turn your upper body slightly forward.
-  poseImage: {fileID: 21300000, guid: 6c4f711ac63e64050847118120beb353, type: 3}
+  instructionTitle: Yoga Pose - Pranamasana
+  instructionText: 'Step 1: Stand tall with your feet together, engaging your legs
+    and core while aligning your spine.'
+  poseImage: {fileID: 21300000, guid: b6e8b69d8ff984fe981953ea385e0f90, type: 3}
