@@ -4729,6 +4729,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   progressFill: {fileID: 1429882948}
   fillSpeed: 0.5
+  decreaseSpeed: 0.3
+  canFill: 0
+  isProgressFullyFilled: 0
+  ib: {fileID: 0}
 --- !u!114 &1999693262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5048,6 +5052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9d421fe85624324094ba27ec5765a10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  latestLessonCompleted: 0
 --- !u!114 &2057462405
 MonoBehaviour:
   m_ObjectHideFlags: 0
