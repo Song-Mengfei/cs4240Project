@@ -6,7 +6,7 @@ public class UserStatsManager : SingletonPatternPersistent<UserStatsManager>
     public int GetCurrLessonNumber() { return currLessonNumber; }
     public bool SetCurrLessonNumber(int _currLessonNumber) 
     {
-        if (_currLessonNumber > latestLessonCompleted)
+        if (_currLessonNumber > latestLessonUnlocked)
         {
             return false;
         }
@@ -14,9 +14,9 @@ public class UserStatsManager : SingletonPatternPersistent<UserStatsManager>
         return true;
     }
     [SerializeField]
-    private int latestLessonCompleted;
-    public int GetlatestLessonCompleted() { return latestLessonCompleted; }
-    public void SetlatestLessonCompleted(int _latestLessonCompleted) { latestLessonCompleted = _latestLessonCompleted; }
+    private int latestLessonUnlocked;
+    public int GetlatestLessonUnlocked() { return latestLessonUnlocked; }
+    public void SetlatestLessonUnlocked(int _latestLessonUnlocked) { latestLessonUnlocked = _latestLessonUnlocked; }
 
     private int currEnvironmentNumber;
     public int GetCurrEnvironmentNumber() { return currEnvironmentNumber; }
@@ -33,6 +33,16 @@ public class UserStatsManager : SingletonPatternPersistent<UserStatsManager>
     private int latestEnvironmentUnlocked;
     public int GetlatestEnvironmentUnlocked() { return latestEnvironmentUnlocked; }
     public void SetlatestEnvironmentUnlocked(int _latestEnvironmentUnlocked) { latestEnvironmentUnlocked = _latestEnvironmentUnlocked; }
+
+    public void CompletedCurrentLesson()
+    {
+        // If completed the latest lesson, unlock the next lesson and environment
+        if (currLessonNumber == latestLessonUnlocked)
+        {
+            latestLessonUnlocked++;
+            latestEnvironmentUnlocked++;
+        }
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

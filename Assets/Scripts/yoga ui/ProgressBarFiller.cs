@@ -8,6 +8,7 @@ public class ProgressBarFiller : MonoBehaviour
     public float fillSpeed = 0.5f; // Speed at which the bar fills
     public float decreaseSpeed = 0.3f;
     [SerializeField] private bool canFill = false;
+    [SerializeField] private bool debugFastCompleteBool = false;
     public bool isProgressFullyFilled = false;
 
     private PositionManager positionManager;
@@ -24,7 +25,7 @@ public class ProgressBarFiller : MonoBehaviour
         if (!canFill) return; // Only update if lesson has started
         if (isProgressFullyFilled) return; // No need to do anything anymore once fully filled
 
-        if (positionManager.IsPoseCorrect())
+        if (positionManager.IsPoseCorrect() || debugFastCompleteBool)
         {
             progressFill.fillAmount = Mathf.Clamp01(progressFill.fillAmount + Time.deltaTime * fillSpeed);
 

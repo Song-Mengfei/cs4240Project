@@ -94,6 +94,8 @@ public class Meditation : MonoBehaviour
         bgmSource.volume = 0f;
         bgmSource.Stop();
 
+        UserStatsManager.Instance.CompletedCurrentLesson();
+
         OurSceneManager.Instance.LoadMainScene();
     }
     public AudioSource MeditationSource
