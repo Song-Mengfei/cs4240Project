@@ -18,6 +18,7 @@ public class InstructionBoard : MonoBehaviour
 
     // Lesson related variables
     public GameObject poseModel;
+    public Transform poseSpawnTransform;
     public GameObject lessonElements;
     public Image poseImageUI;
     public ProgressBarFiller progressBarFiller;
@@ -75,6 +76,7 @@ public class InstructionBoard : MonoBehaviour
     void UpdateLesson()
     {
         poseModel = lessonSOs[currLessonNum].lessonPoseModelPrefab;
+        Instantiate(poseModel, poseSpawnTransform.position, Quaternion.identity, poseSpawnTransform);
     }
 
     public void StartLesson()
