@@ -6,12 +6,11 @@ public class SettingBoard : MonoBehaviour
 {
     public SettingSO setting;
     [SerializeField]
-    private int currentStep = 0;
+    private int currentStep = -1;
     [SerializeField]
     private ArmCalibration armCalibration;
 
     // Settings related variables
-    public GameObject settingElements;
     public TMP_Text settingTextUI;
     public TMP_Text settingTitleUI;
     public TMP_Text nextButtonTextUI;
@@ -20,15 +19,17 @@ public class SettingBoard : MonoBehaviour
     public Image settingImageUI;
 
     // Confirmation screen related variables
+    public GameObject settingElements;
     public GameObject ConfirmationElements;
     public GameObject finalElements;
+    public GameObject startlElements;
 
     void Start()
     {
         HideAll();
         nextButtonTextUI.text = "Next";
         armCalibration = GetComponent<ArmCalibration>();
-        UpdateInstruction();
+        ShowStartUI();
     }
 
     public void NextStep(bool isNext)
@@ -71,6 +72,13 @@ public class SettingBoard : MonoBehaviour
         settingElements.SetActive(false);
         finalElements.SetActive(false);
         ConfirmationElements.SetActive(false);
+        startlElements.SetActive(false);
+    }
+
+    void ShowStartUI()
+    {
+        HideAll();
+        startlElements.SetActive(true);
     }
 
     void ShowFinalUI()
