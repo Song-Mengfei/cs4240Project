@@ -2818,7 +2818,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 374cc1927ff034848944d6c502f14e62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quitPanel: {fileID: 577413634}
+  pauseUI: {fileID: 0}
+  pauseButton: {fileID: 0}
 --- !u!1 &1325731478
 GameObject:
   m_ObjectHideFlags: 0
@@ -4728,10 +4729,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   progressFill: {fileID: 1429882948}
-  fillSpeed: 0.5
+  durationInSeconds: 10
   decreaseSpeed: 0.3
   canFill: 0
+  debugFastCompleteBool: 0
   isProgressFullyFilled: 0
+  testTimeElapsed: 0
   ib: {fileID: 0}
 --- !u!114 &1999693262
 MonoBehaviour:
@@ -5052,7 +5055,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9d421fe85624324094ba27ec5765a10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  latestLessonCompleted: 0
+  currLessonNumber: 0
+  latestLessonUnlocked: 0
 --- !u!114 &2057462405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5077,7 +5081,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 374cc1927ff034848944d6c502f14e62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quitPanel: {fileID: 577413634}
+  pauseUI: {fileID: 0}
+  pauseButton: {fileID: 0}
 --- !u!114 &2057462407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5091,6 +5096,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fader: {fileID: 1385269527}
+  isCurrentlyLoading: 0
 --- !u!1 &2078482565
 GameObject:
   m_ObjectHideFlags: 0
