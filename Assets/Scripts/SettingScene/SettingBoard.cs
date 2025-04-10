@@ -34,18 +34,17 @@ public class SettingBoard : MonoBehaviour
 
     public void NextStep(bool isNext)
     {
-        if (currentStep > setting.instructionsSOs.Length - 1)
-        {
-            ShowFinalUI();
-            return; // Exit function to prevent out-of-bounds issue
-        }
-
         if (isNext)
         {
             armCalibration.recordValue(currentStep);
             currentStep++;
         }
 
+        if (currentStep > setting.instructionsSOs.Length - 1)
+        {
+            ShowFinalUI();
+            return; // Exit function to prevent out-of-bounds issue
+        }
         UpdateInstruction();
 
         //After updating, check if it's the last step and switch buttons
@@ -102,7 +101,7 @@ public class SettingBoard : MonoBehaviour
         }
         else
         {
-            length -= 0.8f; 
+            //length -= 0.8f; 
             confirmationTextUI.text = "The data calibrated is: " + length.ToString("F2") + "m";
         }
 

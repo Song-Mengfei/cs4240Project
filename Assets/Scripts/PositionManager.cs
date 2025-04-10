@@ -22,10 +22,10 @@ public class PositionManager : SingletonPattern<PositionManager>
     void Start()
     {
         // Init
-        head = Camera.main.gameObject;
-        GameObject goRef = head.GetComponentInParent<XROrigin>().gameObject;
-        leftHand = goRef.GetComponentInChildren<LeftHandRef>().gameObject;
-        rightHand = goRef.GetComponentInChildren<RightHandRef>().gameObject;
+        //head = Camera.main.gameObject;
+        //GameObject goRef = head.GetComponentInParent<XROrigin>().gameObject;
+        //leftHand = goRef.GetComponentInChildren<LeftHandRef>().gameObject;
+        //rightHand = goRef.GetComponentInChildren<RightHandRef>().gameObject;
 
         recordAction.action.Enable();
         recordAction.action.performed += OnRecordPormed;
@@ -63,7 +63,7 @@ public class PositionManager : SingletonPattern<PositionManager>
 
     void OnRecordPormed(InputAction.CallbackContext ctx)
     {
-        DebugManager.Log("headPos: " + headPos);
+        //DebugManager.Log("headPos: " + headPos);
         //DebugManager.Log("headRot: " + headRot);
         //DebugManager.Log("leftPos: " + leftControllerPos);
         //DebugManager.Log("leftRot: " + leftControllerRot);
