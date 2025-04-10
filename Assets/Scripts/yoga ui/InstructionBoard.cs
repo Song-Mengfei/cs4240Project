@@ -65,6 +65,7 @@ public class InstructionBoard : MonoBehaviour
         // Fill up text in UI
         UpdateInstruction();
         UpdateLesson();
+        UpodateChecker();
         nextButtonTextUI.text = "Next";
 
         // Get reference to progress bar
@@ -104,6 +105,11 @@ public class InstructionBoard : MonoBehaviour
         }
 
         poseModelRef[currLessonPose].SetActive(true);
+    }
+
+    void UpodateChecker()
+    {
+        PoseManager.Instance.SetCurrPose(lessonSOs[currLessonNum].PoseSOs[currLessonPose].pose);
     }
 
     public void StartLesson()
@@ -149,19 +155,20 @@ public class InstructionBoard : MonoBehaviour
         HideAll();
 
         // Check if it's the last pose
-        if (currLessonPose == lessonSOs.Length - 1)
+        if (currLessonPose == lessonSOs[currLessonNum].PoseSOs.Length - 1)
         {
             ShowConfirmationUI();
         }
         else
         {
             currLessonPose++;
-            currentStep = 0;
+            currentStep = 1;
 
             nextButtonTextUI.text = "Next";
 
             UpdateInstruction();
             UpdateLesson();
+            UpodateChecker();
             ShowInstructionsUI();
         }
     }

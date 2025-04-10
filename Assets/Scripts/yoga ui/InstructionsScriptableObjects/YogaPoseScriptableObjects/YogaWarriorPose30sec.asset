@@ -18,5 +18,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c289bf0fec42244389e7f6c8c872aba6, type: 2}
   - {fileID: 11400000, guid: a6b1e6e5150574477b2fe63483fc6098, type: 2}
   - {fileID: 11400000, guid: 75664cff4dfe1491d80c12778d66697b, type: 2}
-  lessonPoseModelPrefab: {fileID: 2476684452164234548, guid: 128345b5503144fa7b6c50863dc0f72d, type: 3}
+  lessonPoseModelPrefab: {fileID: 3590107468946981520, guid: b379791122efe4acd816393d1d73eb2f, type: 3}
   poseDurationInSeconds: 30

@@ -117,6 +117,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
     <Compile Include="Assets\HIGHLANDS - Stylized Environment\Scripts\AudioZoneControl.cs" />
+    <Compile Include="Assets\Scripts\Poses\Pranamasana.cs" />
     <Compile Include="Assets\Scripts\Poses\SittingPose.cs" />
     <Compile Include="Assets\Scripts\PositionManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />

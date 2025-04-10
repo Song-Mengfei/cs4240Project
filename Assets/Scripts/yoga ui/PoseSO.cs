@@ -6,4 +6,6 @@ public class PoseSO : ScriptableObject
     public InstructionsSO[] instructionsSOs;
     public GameObject lessonPoseModelPrefab;
     public float poseDurationInSeconds;
+
+    public Pose pose;
 }

@@ -4187,6 +4187,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: AppCoreCode
       objectReference: {fileID: 0}
+    - target: {fileID: 6399122978770788102, guid: b0224d07a77a70c4d8267aa23a894844, type: 3}
+      propertyPath: poses.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6399122978770788102, guid: b0224d07a77a70c4d8267aa23a894844, type: 3}
+      propertyPath: 'poses.Array.data[0]'
+      value: 
+      objectReference: {fileID: 3887318598035862416, guid: f5dcee5f98f7bc342a8ad2881e80f4a4, type: 3}
+    - target: {fileID: 6399122978770788102, guid: b0224d07a77a70c4d8267aa23a894844, type: 3}
+      propertyPath: 'poses.Array.data[1]'
+      value: 
+      objectReference: {fileID: 501773554810215209, guid: d2705eee95e79394e991e8128360b11e, type: 3}
     m_RemovedComponents:
     - {fileID: 3350565524481479414, guid: b0224d07a77a70c4d8267aa23a894844, type: 3}
     m_RemovedGameObjects: []
