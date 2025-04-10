@@ -68,10 +68,6 @@ public class ArmCalibration : MonoBehaviour
                 PlayerPrefs.Save();
                 break;
             case 3:
-                PlayerPrefs.SetFloat("ThighLength", distance);
-                PlayerPrefs.Save();
-                break;
-            case 4:
                 PlayerPrefs.SetFloat("HeadHeight", distance);
                 PlayerPrefs.Save();
                 break;

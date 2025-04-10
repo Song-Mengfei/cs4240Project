@@ -5660,6 +5660,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AppCoreCode
       objectReference: {fileID: 0}
+    - target: {fileID: 6399122978770788102, guid: b0224d07a77a70c4d8267aa23a894844, type: 3}
+      propertyPath: currPose
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10074,6 +10078,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 657184242161839408, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 810019319561094050, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
       propertyPath: m_UseGravity
       value: 0

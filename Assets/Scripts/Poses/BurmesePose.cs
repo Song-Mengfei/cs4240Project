@@ -5,7 +5,6 @@ public class BurmesePose : Pose
     private float headOrigin;
     private float forearmLength;
     private float shoulderLength;
-    private const float SittingThreshold = 0.7f;
 
     public override void init()
     {
@@ -75,7 +74,7 @@ public class BurmesePose : Pose
 
     bool IsSitting(Vector3 headPos)
     {
-        bool isSitting = (headOrigin - headPos.y - 0.8f) > SittingThreshold;
+        bool isSitting = Mathf.Abs(headOrigin - headPos.y - 1.0f) < 0.2f;
 
         if (isSitting)
         {

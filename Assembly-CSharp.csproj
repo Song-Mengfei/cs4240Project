@@ -89,6 +89,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\Scripts\yoga ui\ProgressBarFiller.cs" />
     <Compile Include="Assets\Scripts\Buttons\EnvironmentButton.cs" />
+    <Compile Include="Assets\Scripts\Poses\Warrior.cs" />
     <Compile Include="Assets\Scripts\Poses\Pose.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
     <Compile Include="Assets\Scripts\Meditation\Meditation.cs" />
@@ -118,7 +119,6 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
     <Compile Include="Assets\HIGHLANDS - Stylized Environment\Scripts\AudioZoneControl.cs" />
     <Compile Include="Assets\Scripts\Poses\Pranamasana.cs" />
-    <Compile Include="Assets\Scripts\Poses\SittingPose.cs" />
     <Compile Include="Assets\Scripts\PositionManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\yoga ui\rotator.cs" />

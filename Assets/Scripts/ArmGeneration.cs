@@ -3,7 +3,8 @@ using UnityEngine.InputSystem;
 
 public class ArmGeneration : MonoBehaviour
 {
-    public GameObject cylinderPrefab;
+    public GameObject forearm;
+    public GameObject upperarm;
 
     private float leftForearmLength;
     private float rightForearmLength;
@@ -63,7 +64,7 @@ public class ArmGeneration : MonoBehaviour
 
         if (leftForearm == null)
         {
-            leftForearm = Instantiate(cylinderPrefab, forearmPos, forearmRot);
+            leftForearm = Instantiate(forearm, forearmPos, forearmRot);
         }
 
         leftForearm.transform.position = forearmPos;
@@ -83,7 +84,7 @@ public class ArmGeneration : MonoBehaviour
 
         if (rightForearm == null)
         {
-            rightForearm = Instantiate(cylinderPrefab, forearmPos, forearmRot);
+            rightForearm = Instantiate(forearm, forearmPos, forearmRot);
         }
 
         rightForearm.transform.position = forearmPos;
@@ -103,7 +104,7 @@ public class ArmGeneration : MonoBehaviour
 
         if (leftUpperArm == null)
         {
-            leftUpperArm = Instantiate(cylinderPrefab, upperArmPos, upperArmRot);
+            leftUpperArm = Instantiate(upperarm, upperArmPos, upperArmRot);
         }
 
         if (leftShoulder == null)
@@ -138,7 +139,7 @@ public class ArmGeneration : MonoBehaviour
 
         if (rightUpperArm == null)
         {
-            rightUpperArm = Instantiate(cylinderPrefab, upperArmPos, upperArmRot);
+            rightUpperArm = Instantiate(upperarm, upperArmPos, upperArmRot);
         }
 
         if (rightShoulder == null)

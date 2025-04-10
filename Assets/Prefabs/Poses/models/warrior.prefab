@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: warrior
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ccdf04b990af44e8e8fb581818d1521b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1189355609321557929, guid: ccdf04b990af44e8e8fb581818d1521b, type: 3}
       propertyPath: 'm_Materials.Array.data[1]'
       value: 

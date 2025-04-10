@@ -2230,7 +2230,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fdd00df9f5ed814abcb7909a6e66162, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cylinderPrefab: {fileID: 4516944188995070907, guid: 99d44acb9f13a0148a049ede5c50dc64, type: 3}
+  forearm: {fileID: 2102331349414140361, guid: 4b696b92a99d94aa4a8b1095d13dd51f, type: 3}
+  upperarm: {fileID: 6742151945331102895, guid: 49138bd5b7ea841779f90c5c492ebf90, type: 3}
 --- !u!1 &663364410
 GameObject:
   m_ObjectHideFlags: 0
@@ -4143,6 +4144,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4437653767681636337, guid: b0224d07a77a70c4d8267aa23a894844, type: 3}
+      propertyPath: currLessonNumber
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4720474804352221578, guid: b0224d07a77a70c4d8267aa23a894844, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4187,6 +4192,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AppCoreCode
       objectReference: {fileID: 0}
+    - target: {fileID: 6399122978770788102, guid: b0224d07a77a70c4d8267aa23a894844, type: 3}
+      propertyPath: currPose
+      value: 
+      objectReference: {fileID: -2388325941176922341, guid: 4ee1f97fdbb17d14d8d5949e59a50960, type: 3}
     - target: {fileID: 6399122978770788102, guid: b0224d07a77a70c4d8267aa23a894844, type: 3}
       propertyPath: poses.Array.size
       value: 2
@@ -4692,6 +4701,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 657184242161839408, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 657184242222895507, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
       propertyPath: m_Name
       value: Right

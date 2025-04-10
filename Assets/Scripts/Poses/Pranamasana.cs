@@ -81,7 +81,7 @@ public class Pranamasana : Pose
 
     bool IsStanding(Vector3 headPos)
     {
-        bool isStanding = Mathf.Abs(headOrigin - headPos.y -1.0f) < 0.1f;
+        bool isStanding = Mathf.Abs(headOrigin - headPos.y) < 0.1f;
 
         if (isStanding)
         {
