@@ -6,6 +6,9 @@ public class BurmesePose : Pose
     private float forearmLength;
     private float shoulderLength;
 
+    private string poseStat;
+    private string poseHint;
+
     public override void init()
     {
         headOrigin = PlayerPrefs.GetFloat("HeadHeight", Mathf.Infinity);
@@ -30,6 +33,16 @@ public class BurmesePose : Pose
                IsSitting(_headPos);
     }
 
+    public override string GetStat()
+    {
+        return poseStat;
+    }
+
+    public override string GetHint()
+    {
+        return poseHint;
+    }
+
 
     bool IsHeadStraight(Quaternion headRot)
     {
@@ -38,6 +51,11 @@ public class BurmesePose : Pose
         euler.z = NormalizeAngle(euler.z);
 
         bool isHeadStraight = Mathf.Abs(euler.x) <= 10f && Mathf.Abs(euler.z) <= 10f;
+
+        if (!isHeadStraight) {
+            poseStat = "The head is not facing forward.";
+            poseHint = "Try to face forward and look straight ahead.";
+        }
 
         DebugManager.Log(isHeadStraight ? "HeadStraight" : "NotHeadStraight");
 
@@ -54,6 +72,12 @@ public class BurmesePose : Pose
 
         bool areHandsSymmetric = Mathf.Abs(horizontalDistance - shoulderLength) < tolerance;
 
+        if (!areHandsSymmetric)
+        {
+            poseStat = "The hand is not placed on the knee.";
+            poseHint = "Try to place your hand on your knee.";
+        }
+
         DebugManager.Log(areHandsSymmetric ? "HandsSymmetry" : "NotHandsSymmetry");
 
         return areHandsSymmetric;
@@ -67,25 +91,15 @@ public class BurmesePose : Pose
         bool areHandsOnKnees = Mathf.Abs(leftDist - forearmLength) < 0.2f &&
                                Mathf.Abs(rightDist - forearmLength) < 0.2f;
 
+        if (!areHandsOnKnees)
+        {
+            poseStat = "The hand is not placed on the knee.";
+            poseHint = "Try to place your hand on your knee.";
+        }
+
         DebugManager.Log(areHandsOnKnees ? "HandsOnKnees" : "NotHandsOnKnees");
 
         return areHandsOnKnees;
-    }
-
-    bool IsSitting(Vector3 headPos)
-    {
-        bool isSitting = Mathf.Abs(headOrigin - headPos.y - 1.0f) < 0.2f;
-
-        if (isSitting)
-        {
-            DebugManager.Log("Sitting");
-        }
-        else
-        {
-            DebugManager.Log($"NotSitting (headOrigin: {headOrigin}, current: {headPos.y})");
-        }
-
-        return isSitting;
     }
 
     bool ArePalmsFacingUp(Quaternion leftRot, Quaternion rightRot)
@@ -98,9 +112,35 @@ public class BurmesePose : Pose
 
         bool palmsUp = leftAngle < 90f && rightAngle < 90f;
 
+        if (!palmsUp)
+        {
+            poseStat = "Your palms are not facing upward.";
+            poseHint = "Place your palms facing upward on your knees.";
+        }
+
         DebugManager.Log(palmsUp ? "PalmsFacingUp" : $"PalmsNotUp (L:{leftAngle:F1}, R:{rightAngle:F1})");
 
         return palmsUp;
+    }
+
+    bool IsSitting(Vector3 headPos)
+    {
+        bool isSitting = Mathf.Abs(headOrigin - headPos.y - 1.0f) < 0.2f;
+
+        if (isSitting)
+        {
+            poseStat = "Great job! Your posture is perfect.";
+            poseHint = "Try to hold the pose a little longer.";
+            DebugManager.Log("Sitting");
+        }
+        else
+        {
+            poseStat = "It seems like you haven't sat down.";
+            poseHint = "Find a comfortable spot and take a seat.";
+            DebugManager.Log($"NotSitting (headOrigin: {headOrigin}, current: {headPos.y})");
+        }
+
+        return isSitting;
     }
 
 }

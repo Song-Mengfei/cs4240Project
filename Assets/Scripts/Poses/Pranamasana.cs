@@ -1,9 +1,12 @@
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 
 public class Pranamasana : Pose
 {
     private float headOrigin;
 
+    private string poseStat;
+    private string poseHint;
 
     public override void init()
     {
@@ -22,6 +25,16 @@ public class Pranamasana : Pose
                IsStanding(_headPos);
     }
 
+    public override string GetStat()
+    {
+        return poseStat;
+    }
+
+    public override string GetHint()
+    {
+        return poseHint;
+    }
+
     bool IsHeadStraight(Quaternion headRot)
     {
         Vector3 euler = headRot.eulerAngles;
@@ -30,14 +43,13 @@ public class Pranamasana : Pose
 
         bool isHeadStraight = Mathf.Abs(euler.x) <= 10f && Mathf.Abs(euler.z) <= 10f;
 
-        if (isHeadStraight)
+        if (!isHeadStraight)
         {
+            poseStat = "The head is not facing forward.";
+            poseHint = "Try to face forward and look straight ahead.";
             Debug.Log("HeadStraight");
         }
-        else
-        {
-            Debug.Log("notHeadStraight");
-        }
+
         return isHeadStraight;
     }
 
@@ -47,13 +59,11 @@ public class Pranamasana : Pose
 
         bool areHandsTogether = distance < 0.1f;
 
-        if (areHandsTogether)
+        if (!areHandsTogether)
         {
+            poseStat = "Your hands are not placed together.";
+            poseHint = "Try to bring your hands together.";
             Debug.Log("HandsTogether");
-        }
-        else
-        {
-            Debug.Log("notHandsTogether");
         }
 
         return areHandsTogether;
@@ -68,14 +78,13 @@ public class Pranamasana : Pose
         bool leftIsFlat = (Mathf.Abs(rightEuler.x) > 350f || Mathf.Abs(rightEuler.x) < 10f) && (Mathf.Abs(rightEuler.z) < 10f || Mathf.Abs(rightEuler.z) > 350f);
         bool areArmsStraight = leftIsFlat && rotationDifference > 170f && rotationDifference < 190f;
 
-        if (areArmsStraight)
+        if (!areArmsStraight)
         {
+            poseStat = "It looks like your arms aren't level.";
+            poseHint = "Try to align both arms so they¡¯re on the same horizontal line.";
             Debug.Log("ArmsStraight");
         }
-        else
-        {
-            Debug.Log("notArmsStraight");
-        }
+
         return areArmsStraight;
     }
 
@@ -85,11 +94,15 @@ public class Pranamasana : Pose
 
         if (isStanding)
         {
-            Debug.Log("Standing");
+            poseStat = "Great job! Your posture is perfect.";
+            poseHint = "Try to hold the pose a little longer.";
+            DebugManager.Log("Sitting");
         }
         else
         {
-            Debug.Log("headOrigin: " + headOrigin + "now: " + headPos.y);
+            poseStat = "It seems like you haven't stand up.";
+            poseHint = "Find an open space and stand up.";
+            DebugManager.Log($"NotSitting (headOrigin: {headOrigin}, current: {headPos.y})");
         }
 
         return isStanding;

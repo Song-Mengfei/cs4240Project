@@ -31,4 +31,14 @@ public class PoseManager : SingletonPatternPersistent<PoseManager>
     {
         currPose = pose;
     }
+
+    public string GetPoseStat()
+    {
+        return currPose.GetStat();
+    }
+
+    public string GetPoseHint()
+    {
+        return currPose.GetHint();
+    }
 }

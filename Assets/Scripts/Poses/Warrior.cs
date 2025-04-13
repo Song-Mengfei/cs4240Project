@@ -8,6 +8,9 @@ public class Warrior : Pose
     private float rightForearmLength;
     private float shoulderLength;
 
+    private string poseStat;
+    private string poseHint;
+
     public override void init()
     {
         headOrigin = PlayerPrefs.GetFloat("HeadHeight", Mathf.Infinity);
@@ -33,6 +36,16 @@ public class Warrior : Pose
                IsLunge(_headPos);
     }
 
+    public override string GetStat()
+    {
+        return poseStat;
+    }
+
+    public override string GetHint()
+    {
+        return poseHint;
+    }
+
     bool IsHeadStraight(Quaternion headRot)
     {
         Vector3 euler = headRot.eulerAngles;
@@ -40,6 +53,12 @@ public class Warrior : Pose
         euler.z = NormalizeAngle(euler.z);
 
         bool isHeadStraight = Mathf.Abs(euler.x) <= 10f && Mathf.Abs(euler.z) <= 10f;
+
+        if (!isHeadStraight)
+        {
+            poseStat = "The head is not facing forward.";
+            poseHint = "Try to face forward and look straight ahead.";
+        }
 
         DebugManager.Log(isHeadStraight ? "HeadStraight" : "NotHeadStraight");
 
@@ -52,6 +71,13 @@ public class Warrior : Pose
 
         bool areArmsStraight = Mathf.Abs(distance - 2 * leftForearmLength - 2 * rightForearmLength - shoulderLength + 0.2f) < 0.25f;
 
+        if (!areArmsStraight)
+        {
+            poseStat = "It looks like your arms aren¡¯t fully extended.";
+            poseHint = "Try to fully extend your arms.";
+            Debug.Log("ArmsStraight");
+        }
+
         DebugManager.Log(areArmsStraight ? "ArmsStraight" : "notArmsStraight");
 
         return areArmsStraight;
@@ -60,6 +86,13 @@ public class Warrior : Pose
     bool AreArmsSameLevel(Vector3 leftPos, Vector3 rightPos)
     {
         bool areArmsSameLevel = Mathf.Abs(leftPos.y - rightPos.y) < 0.15f;
+
+        if (!areArmsSameLevel)
+        {
+            poseStat = "It looks like your arms aren't level.";
+            poseHint = "Try to align both arms so they¡¯re on the same horizontal line.";
+            Debug.Log("ArmsStraight");
+        }
 
         DebugManager.Log(areArmsSameLevel ? "ArmsSameLevel" : "notArmsSameLevel");
         return areArmsSameLevel;
@@ -74,13 +107,12 @@ public class Warrior : Pose
 
         bool isLeftHandForward = dot > 0.9f;
 
-        if (isLeftHandForward)
+        if (!isLeftHandForward)
         {
+            poseStat = "It seems like you haven't extended your left hand forward.";
+            poseHint = "Try to extend your left hand forward.";
+            
             Debug.Log("LeftHandForward");
-        }
-        else
-        {
-            Debug.Log("notLeftHandForward");
         }
 
         return isLeftHandForward;
@@ -89,6 +121,18 @@ public class Warrior : Pose
     bool IsLunge(Vector3 headPos)
     {
         bool isLunge = headOrigin - headPos.y > 0.25f;
+
+        if (isLunge)
+        {
+            poseStat = "Great job! Your posture is perfect.";
+            poseHint = "Try to hold the pose a little longer.";
+            DebugManager.Log("Sitting");
+        }
+        else
+        {
+            poseStat = "It looks like you're not in a lunge position.";
+            poseHint = "Try getting into a lunge position.";
+        }
 
         DebugManager.Log(isLunge ? "Lunge" : "notLunge");
 
