@@ -69,7 +69,9 @@ public class Warrior : Pose
     {
         float distance = Vector3.Distance(leftPos, rightPos);
 
-        bool areArmsStraight = Mathf.Abs(distance - 2 * leftForearmLength - 2 * rightForearmLength - shoulderLength + 0.2f) < 0.25f;
+        Debug.Log("arm dist " + Mathf.Abs(distance - 2 * leftForearmLength - 2 * rightForearmLength - shoulderLength));
+
+        bool areArmsStraight = Mathf.Abs(distance - 2 * leftForearmLength - 2 * rightForearmLength - shoulderLength ) < 0.5f;
 
         if (!areArmsStraight)
         {

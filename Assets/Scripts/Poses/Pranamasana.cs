@@ -71,21 +71,25 @@ public class Pranamasana : Pose
 
     bool AreArmsStraight(Quaternion leftRot, Quaternion rightRot)
     {
-        float rotationDifference = Quaternion.Angle(leftRot, rightRot);
-
+        Vector3 leftEuler = leftRot.eulerAngles;
         Vector3 rightEuler = rightRot.eulerAngles;
 
-        bool leftIsFlat = (Mathf.Abs(rightEuler.x) > 350f || Mathf.Abs(rightEuler.x) < 10f) && (Mathf.Abs(rightEuler.z) < 10f || Mathf.Abs(rightEuler.z) > 350f);
-        bool areArmsStraight = leftIsFlat && rotationDifference > 170f && rotationDifference < 190f;
+        bool leftIsFlat = (Mathf.Abs(leftEuler.x) > 350f || Mathf.Abs(leftEuler.x) < 10f) && (Mathf.Abs(leftEuler.z) < 10f || Mathf.Abs(leftEuler.z) > 350f);
+        bool rightIsFlat = (Mathf.Abs(rightEuler.x) > 350f || Mathf.Abs(rightEuler.x) < 10f) && (Mathf.Abs(rightEuler.z) < 10f || Mathf.Abs(rightEuler.z) > 350f);
 
-        if (!areArmsStraight)
+        Debug.Log("leftIsFlat: " + leftIsFlat + ", rightIsFlat" + rightIsFlat);
+        Debug.Log("leftEuler: " + leftEuler + ", rightEuler" + rightEuler);
+        if (leftIsFlat && rightIsFlat)
         {
+            //Debug.Log("leftIsFlat: " + leftIsFlat + ", rightIsFlat" + rightIsFlat);
+            //Debug.Log("leftEuler: " + leftEuler + ", rightEuler" + rightEuler);
             poseStat = "It looks like your arms aren't level.";
             poseHint = "Try to align both arms so they¡¯re on the same horizontal line.";
             Debug.Log("ArmsStraight");
+            return false;
         }
 
-        return areArmsStraight;
+        return true;
     }
 
     bool IsStanding(Vector3 headPos)

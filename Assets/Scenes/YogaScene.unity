@@ -2517,8 +2517,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fdd00df9f5ed814abcb7909a6e66162, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forearm: {fileID: 2102331349414140361, guid: 4b696b92a99d94aa4a8b1095d13dd51f, type: 3}
-  upperarm: {fileID: 6742151945331102895, guid: 49138bd5b7ea841779f90c5c492ebf90, type: 3}
+  forearm: {fileID: 4516944188995070907, guid: 99d44acb9f13a0148a049ede5c50dc64, type: 3}
+  upperarm: {fileID: 4516944188995070907, guid: 99d44acb9f13a0148a049ede5c50dc64, type: 3}
 --- !u!1 &663364410
 GameObject:
   m_ObjectHideFlags: 0
