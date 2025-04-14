@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: YogaBurmesePoseStep1
   m_EditorClassIdentifier: 
   instructionTitle: Yoga pose - Burmese
-  instructionText: Welcome to yoga lesson! Find a quiet space and let's get start!
+  instructionText: This the Burmese pose.
   poseImage: {fileID: 21300000, guid: 1811ea045d82a4021b0ca1b563be4ce1, type: 3}

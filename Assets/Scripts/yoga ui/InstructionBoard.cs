@@ -11,6 +11,7 @@ public class InstructionBoard : MonoBehaviour
     private int currLessonPose = 0;
     [SerializeField]
     private int currLessonNum = 0;
+    private bool isStartOfLesson = true;
 
     // Instructions related variables
     public GameObject instructionElements;
@@ -74,6 +75,14 @@ public class InstructionBoard : MonoBehaviour
 
     public void NextStep()
     {
+        if (isStartOfLesson)
+        {
+            isStartOfLesson = false;
+
+            UpdateInstruction();
+            return;
+        }
+
         if (currentStep >= lessonSOs[currLessonNum].PoseSOs[currLessonPose].instructionsSOs.Length - 1)
         {
             StartLesson();
@@ -93,9 +102,18 @@ public class InstructionBoard : MonoBehaviour
 
     void UpdateInstruction()
     {
-        instructionTitleUI.text = lessonSOs[currLessonNum].PoseSOs[currLessonPose].instructionsSOs[currentStep].instructionTitle;
-        instructionTextUI.text = lessonSOs[currLessonNum].PoseSOs[currLessonPose].instructionsSOs[currentStep].instructionText;
-        poseImageUI.sprite = lessonSOs[currLessonNum].PoseSOs[currLessonPose].instructionsSOs[currentStep].poseImage;
+        if (isStartOfLesson)
+        {
+            instructionTitleUI.text = "Lesson " + (currLessonNum + 1);
+            instructionTextUI.text = lessonSOs[currLessonNum].introString;
+            poseImageUI.sprite = lessonSOs[currLessonNum].PoseSOs[currLessonPose].instructionsSOs[currentStep].poseImage;
+        }
+        else
+        {
+            instructionTitleUI.text = lessonSOs[currLessonNum].PoseSOs[currLessonPose].instructionsSOs[currentStep].instructionTitle;
+            instructionTextUI.text = lessonSOs[currLessonNum].PoseSOs[currLessonPose].instructionsSOs[currentStep].instructionText;
+            poseImageUI.sprite = lessonSOs[currLessonNum].PoseSOs[currLessonPose].instructionsSOs[currentStep].poseImage;
+        }
     }
     void UpdateLesson()
     {
@@ -162,7 +180,7 @@ public class InstructionBoard : MonoBehaviour
         else
         {
             currLessonPose++;
-            currentStep = 1;
+            currentStep = 0;
 
             nextButtonTextUI.text = "Next";
 

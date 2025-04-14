@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: YogaBurmesePoseStep2
   m_EditorClassIdentifier: 
   instructionTitle: Yoga pose - Burmese
-  instructionText: 'Step 1: Sit on a flat surface, begin in a simple cross-legged
-    position. Keep your back straight and relax your shoulders.'
+  instructionText: 'Step 1: Sit on a flat surface, in a simple cross-legged position.
+    Keep your back straight and relax your shoulders.'
   poseImage: {fileID: 21300000, guid: 91add177a638844c1a33af62877ccca3, type: 3}

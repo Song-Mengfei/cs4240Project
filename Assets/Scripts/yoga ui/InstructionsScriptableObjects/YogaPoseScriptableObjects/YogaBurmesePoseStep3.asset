@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: YogaBurmesePoseStep3
   m_EditorClassIdentifier: 
   instructionTitle: Yoga pose - Burmese
-  instructionText: Step 2 - Rest your hands on your knees with palms facing up.
+  instructionText: Step 2 - Rest your hands on your knees with your palms facing
+    up.
   poseImage: {fileID: 21300000, guid: 1811ea045d82a4021b0ca1b563be4ce1, type: 3}

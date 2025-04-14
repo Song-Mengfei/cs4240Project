@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d210cbcbae439c441a9dcf0e4f76bf5d, type: 3}
-  m_Name: YogaBurmesePose2sec
+  m_Name: YogaBurmesePose15sec
   m_EditorClassIdentifier: 
   instructionsSOs:
   - {fileID: 11400000, guid: ac9d0a8849fccbf4ea12d860a4d75305, type: 2}
