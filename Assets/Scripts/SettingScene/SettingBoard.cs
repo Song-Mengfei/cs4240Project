@@ -101,7 +101,7 @@ public class SettingBoard : MonoBehaviour
         }
         else
         {
-            length -= 0.8f;
+            length -= 0.9f;
             confirmationTextUI.text = "The data calibrated is: " + length.ToString("F2") + "m";
         }
 

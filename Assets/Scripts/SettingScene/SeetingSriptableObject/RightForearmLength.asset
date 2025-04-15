@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 788ddbba8f5f73d439aeb95ff2d0bb32, type: 3}
-  m_Name: SettingStep4
+  m_Name: RightForearmLength
   m_EditorClassIdentifier: 
-  instructionTitle: ThighLength
-  instructionText: Place your LEFT controller to one of your knee and your RIGHT
-    controller to the waist and press right selection button
-  poseImage: {fileID: 0}
+  instructionTitle: RightForearmLength
+  instructionText: Place your LEFT controller to your RIGHT elbow and press right
+    selection button
+  poseImage: {fileID: 21300000, guid: 99f1a4caa88b82e4a8a27ec29b097d1f, type: 3}

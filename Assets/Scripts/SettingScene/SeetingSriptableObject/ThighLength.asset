@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 788ddbba8f5f73d439aeb95ff2d0bb32, type: 3}
-  m_Name: SettingStep5
+  m_Name: ThighLength
   m_EditorClassIdentifier: 
-  instructionTitle: Height
-  instructionText: Please stand up straight and press LEFT selection button
-  poseImage: {fileID: 21300000, guid: a81a5db3959a04a46b1e45b9dd68eabd, type: 3}
+  instructionTitle: ThighLength
+  instructionText: Place your LEFT controller to one of your knee, your RIGHT controller
+    to the waist and press right selection button
+  poseImage: {fileID: 21300000, guid: 30aac3b970aa97e4c9b6d7186b2073cd, type: 3}

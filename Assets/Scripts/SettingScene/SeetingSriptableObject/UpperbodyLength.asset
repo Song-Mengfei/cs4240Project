@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 788ddbba8f5f73d439aeb95ff2d0bb32, type: 3}
-  m_Name: SettingStep2
+  m_Name: UpperbodyLength
   m_EditorClassIdentifier: 
-  instructionTitle: RightForearmLength
-  instructionText: Place your LEFT controller to your RIGHT elbow and press right
-    selection button
-  poseImage: {fileID: 21300000, guid: ba28153772051a94db56e9c1ff95c9fc, type: 3}
+  instructionTitle: UpperbodyLength
+  instructionText: Place your left hand on your left hip, right hand on your left
+    shoulder  and press right selection button
+  poseImage: {fileID: 21300000, guid: 48ee16910c2228a49aad74c58b9a484d, type: 3}
