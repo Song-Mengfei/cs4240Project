@@ -91,7 +91,8 @@ public class Warrior : Pose
 
     bool AreArmsSameLevel(Vector3 leftPos, Vector3 rightPos)
     {
-        bool areArmsSameLevel = Mathf.Abs(leftPos.y - rightPos.y) < 0.15f;
+        bool areArmsSameLevel = Mathf.Abs(leftPos.y - rightPos.y) < 0.3f;
+        Debug.Log("left: " + leftPos.y + " right: " + rightPos.y);
 
         if (!areArmsSameLevel)
         {
