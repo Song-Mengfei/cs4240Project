@@ -5,6 +5,8 @@ public class BurmesePose : Pose
     private float headOrigin;
     private float forearmLength;
     private float shoulderLength;
+    private float chestHeight;
+    private float upperbodyLength;
 
     private string poseStat;
     private string poseHint;
@@ -19,6 +21,8 @@ public class BurmesePose : Pose
 
         forearmLength = PlayerPrefs.GetFloat("LeftForearmLength", 0.4f);
         shoulderLength = PlayerPrefs.GetFloat("ShoulderLength", 0.4f);
+        chestHeight = PlayerPrefs.GetFloat("ChestHeight", 0.4f);
+        upperbodyLength = PlayerPrefs.GetFloat("UpperbodyLength", 0.5f);
     }
 
     public override bool IsCorrct(Vector3 _headPos, Vector3 _leftHandPos, Vector3 _rightHandPos,
@@ -125,7 +129,7 @@ public class BurmesePose : Pose
 
     bool IsSitting(Vector3 headPos)
     {
-        bool isSitting = Mathf.Abs(headOrigin - headPos.y - 1.0f) < 0.2f;
+        bool isSitting = Mathf.Abs(headPos.y - chestHeight - upperbodyLength) < 0.2f;
 
         if (isSitting)
         {

@@ -4,9 +4,8 @@ using UnityEngine;
 public class Warrior : Pose
 {
     private float headOrigin;
-    private float leftForearmLength;
-    private float rightForearmLength;
-    private float shoulderLength;
+    private float armSpan;
+    private float thighLength;
 
     private string poseStat;
     private string poseHint;
@@ -19,9 +18,8 @@ public class Warrior : Pose
             DebugManager.Log("Please set the head height at first!");
         }
 
-        leftForearmLength = PlayerPrefs.GetFloat("LeftForearmLength", 0.4f);
-        rightForearmLength = PlayerPrefs.GetFloat("RightForearmLength", 0.4f);
-        shoulderLength = PlayerPrefs.GetFloat("ShoulderLength", 0.4f);
+        armSpan = PlayerPrefs.GetFloat("ArmSpan", 1.6f);
+        thighLength = PlayerPrefs.GetFloat("ThighLength", 0.4f);
     }
 
     public override bool IsCorrct(Vector3 _headPos, Vector3 _leftHandPos, Vector3 _rightHandPos,
@@ -69,9 +67,7 @@ public class Warrior : Pose
     {
         float distance = Vector3.Distance(leftPos, rightPos);
 
-        Debug.Log("arm dist " + Mathf.Abs(distance - 2 * leftForearmLength - 2 * rightForearmLength - shoulderLength));
-
-        bool areArmsStraight = Mathf.Abs(distance - 2 * leftForearmLength - 2 * rightForearmLength - shoulderLength ) < 0.5f;
+        bool areArmsStraight = Mathf.Abs(distance - armSpan) < 0.2f;
 
         if (!areArmsStraight)
         {
@@ -122,7 +118,7 @@ public class Warrior : Pose
 
     bool IsLunge(Vector3 headPos)
     {
-        bool isLunge = headOrigin - headPos.y > 0.25f;
+        bool isLunge = Mathf.Abs(headOrigin - headPos.y - thighLength) < 0.2f;
 
         if (isLunge)
         {

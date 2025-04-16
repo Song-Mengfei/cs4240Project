@@ -11,14 +11,6 @@ public class PoseManager : SingletonPatternPersistent<PoseManager>
     {
         currPose.init();
         isPoseCorrect = currPose.IsCorrct(_headPos, _leftHandPos, _rightHandPos, _headRot, _leftHandRot, _rightHandRot);
-        //if (isCorrect)
-        //{
-        //    DebugManager.Log("good job!");
-        //}
-        //else
-        //{
-        //    DebugManager.Log("bad boy!");
-        //}
         return isPoseCorrect;
     }
 
