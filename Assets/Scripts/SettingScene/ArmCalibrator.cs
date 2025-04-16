@@ -17,6 +17,7 @@ public class ArmCalibration : MonoBehaviour
         recordAction.action.performed += OnRecordPormed;
         measureAction.action.performed += OnMeasurePormed;
         settingBoard = GetComponent<SettingBoard>();
+        finishRecord();
     }
 
     public void startRecord()
