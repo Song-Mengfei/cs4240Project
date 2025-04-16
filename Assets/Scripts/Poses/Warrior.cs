@@ -25,6 +25,13 @@ public class Warrior : Pose
     public override bool IsCorrct(Vector3 _headPos, Vector3 _leftHandPos, Vector3 _rightHandPos,
                                   Quaternion _headRot, Quaternion _leftHandRot, Quaternion _rightHandRot)
     {
+        if (IsDebugCheatOn)
+        {
+            poseStat = "Great job! Your posture is perfect.";
+            poseHint = "Try to hold the pose a little longer.";
+            DebugManager.Log("DEBUG");
+            return true;
+        }
         DebugManager.Log("Checking BurmesePose...");
 
         return IsHeadStraight(_headRot) &&
@@ -71,7 +78,7 @@ public class Warrior : Pose
 
         if (!areArmsStraight)
         {
-            poseStat = "It looks like your arms aren¡¯t fully extended.";
+            poseStat = "It looks like your arms aren't fully extended.";
             poseHint = "Try to fully extend your arms.";
             Debug.Log("distance " + distance + "armSpan " + armSpan);
             Debug.Log("ArmsStraight");
@@ -89,7 +96,7 @@ public class Warrior : Pose
         if (!areArmsSameLevel)
         {
             poseStat = "It looks like your arms aren't level.";
-            poseHint = "Try to align both arms so they¡¯re on the same horizontal line.";
+            poseHint = "Try to align both arms so they're on the same horizontal line.";
             Debug.Log("ArmsStraight");
         }
 

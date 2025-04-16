@@ -6,10 +6,14 @@ public class PoseManager : SingletonPatternPersistent<PoseManager>
 {    
     public Pose currPose;
     public bool isPoseCorrect;
+    public bool isDebugCheatOn;
 
     public bool CheckPose(Vector3 _headPos, Vector3 _leftHandPos, Vector3 _rightHandPos, Quaternion _headRot, Quaternion _leftHandRot, Quaternion _rightHandRot)
     {
         currPose.init();
+
+        currPose.IsDebugCheatOn = isDebugCheatOn;
+
         isPoseCorrect = currPose.IsCorrct(_headPos, _leftHandPos, _rightHandPos, _headRot, _leftHandRot, _rightHandRot);
         return isPoseCorrect;
     }

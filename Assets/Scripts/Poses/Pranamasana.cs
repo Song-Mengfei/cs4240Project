@@ -19,6 +19,14 @@ public class Pranamasana : Pose
 
     public override bool IsCorrct(Vector3 _headPos, Vector3 _leftHandPos, Vector3 _rightHandPos, Quaternion _headRot, Quaternion _leftHandRot, Quaternion _rightHandRot)
     {
+        if (IsDebugCheatOn)
+        {
+            poseStat = "Great job! Your posture is perfect.";
+            poseHint = "Try to hold the pose a little longer.";
+            DebugManager.Log("DEBUG");
+            return true;
+        }
+
         return IsHeadStraight(_headRot) &&
                AreHandsTogether(_leftHandPos, _rightHandPos) &&
                AreArmsStraight(_leftHandRot, _rightHandRot) &&
@@ -84,7 +92,7 @@ public class Pranamasana : Pose
             //Debug.Log("leftIsFlat: " + leftIsFlat + ", rightIsFlat" + rightIsFlat);
             //Debug.Log("leftEuler: " + leftEuler + ", rightEuler" + rightEuler);
             poseStat = "It looks like your arms aren't level.";
-            poseHint = "Try to align both arms so they¡¯re on the same horizontal line.";
+            poseHint = "Try to align both arms so they're on the same horizontal line.";
             Debug.Log("ArmsStraight");
             return false;
         }

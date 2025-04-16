@@ -28,6 +28,14 @@ public class BurmesePose : Pose
     public override bool IsCorrct(Vector3 _headPos, Vector3 _leftHandPos, Vector3 _rightHandPos,
                                   Quaternion _headRot, Quaternion _leftHandRot, Quaternion _rightHandRot)
     {
+        if (IsDebugCheatOn)
+        {
+            poseStat = "Great job! Your posture is perfect.";
+            poseHint = "Try to hold the pose a little longer.";
+            DebugManager.Log("DEBUG");
+            return true;
+        }
+
         DebugManager.Log("Checking BurmesePose...");
 
         return IsHeadStraight(_headRot) &&
@@ -78,8 +86,8 @@ public class BurmesePose : Pose
 
         if (!areHandsSymmetric)
         {
-            poseStat = "The hand is not placed on the knee.";
-            poseHint = "Try to place your hand on your knee.";
+            poseStat = "The hands are not placed on the knees.";
+            poseHint = "Try to place your hands on your knees.";
         }
 
         DebugManager.Log(areHandsSymmetric ? "HandsSymmetry" : "NotHandsSymmetry");
@@ -97,8 +105,8 @@ public class BurmesePose : Pose
 
         if (!areHandsOnKnees)
         {
-            poseStat = "The hand is not placed on the knee.";
-            poseHint = "Try to place your hand on your knee.";
+            poseStat = "The hands are not placed on the knees.";
+            poseHint = "Try to place your hands on your knees.";
         }
 
         DebugManager.Log(areHandsOnKnees ? "HandsOnKnees" : "NotHandsOnKnees");

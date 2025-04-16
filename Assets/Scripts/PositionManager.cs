@@ -47,6 +47,7 @@ public class PositionManager : SingletonPattern<PositionManager>
         rightControllerRot = rightHand.transform.rotation;
 
         armGeneration.GenerateArms(headPos, leftControllerPos, rightControllerPos, headRot, leftControllerRot, rightControllerRot);
+
         isCorrect = poseManager.CheckPose(headPos, leftControllerPos, rightControllerPos, headRot, leftControllerRot, rightControllerRot);
 
 

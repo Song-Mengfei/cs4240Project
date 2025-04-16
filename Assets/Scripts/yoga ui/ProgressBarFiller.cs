@@ -33,10 +33,13 @@ public class ProgressBarFiller : MonoBehaviour
     void Update()
     {
         testTimeElapsed += Time.deltaTime;
-       
+
+        debugFastCompleteBool = Input.GetKey(KeyCode.Space);
 
         if (!canFill) return; // Only update if lesson has started
         if (isProgressFullyFilled) return; // No need to do anything anymore once fully filled
+
+        PoseManager.Instance.isDebugCheatOn = debugFastCompleteBool;
 
         if (positionManager.IsPoseCorrect() || debugFastCompleteBool)
         {
