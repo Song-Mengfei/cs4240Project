@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PoseSOs:
   - {fileID: 11400000, guid: 505e1927fae772842b9f26c6f0c20af4, type: 2}
-  - {fileID: 11400000, guid: 2f00312ca38163746a196cd36aaf5f51, type: 2}
+  - {fileID: 11400000, guid: fe5626548feb55e4999f15709485b8bf, type: 2}
   introString: Welcome to lesson 2! We will be doing the Pranmasana and Warriorposes.
