@@ -57,7 +57,7 @@ public class Warrior : Pose
         euler.x = NormalizeAngle(euler.x);
         euler.z = NormalizeAngle(euler.z);
 
-        bool isHeadStraight = Mathf.Abs(euler.x) <= 10f && Mathf.Abs(euler.z) <= 10f;
+        bool isHeadStraight = Mathf.Abs(euler.x) <= 10f && Mathf.Abs(euler.z) <= 20f;
 
         if (!isHeadStraight)
         {
@@ -74,7 +74,7 @@ public class Warrior : Pose
     {
         float distance = Vector3.Distance(leftPos, rightPos);
 
-        bool areArmsStraight = Mathf.Abs(distance - armSpan) < 0.5f;
+        bool areArmsStraight = Mathf.Abs(distance - armSpan) < 1f;
 
         if (!areArmsStraight)
         {

@@ -62,7 +62,7 @@ public class BurmesePose : Pose
         euler.x = NormalizeAngle(euler.x);
         euler.z = NormalizeAngle(euler.z);
 
-        bool isHeadStraight = Mathf.Abs(euler.x) <= 10f && Mathf.Abs(euler.z) <= 10f;
+        bool isHeadStraight = Mathf.Abs(euler.x) <= 10f && Mathf.Abs(euler.z) <= 20f;
 
         if (!isHeadStraight) {
             poseStat = "The head is not facing forward.";

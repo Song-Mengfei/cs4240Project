@@ -49,7 +49,7 @@ public class Pranamasana : Pose
         euler.x = (euler.x > 180) ? euler.x - 360 : euler.x;
         euler.z = (euler.z > 180) ? euler.z - 360 : euler.z;
 
-        bool isHeadStraight = Mathf.Abs(euler.x) <= 10f && Mathf.Abs(euler.z) <= 10f;
+        bool isHeadStraight = Mathf.Abs(euler.x) <= 10f && Mathf.Abs(euler.z) <= 20f;
 
         if (!isHeadStraight)
         {
