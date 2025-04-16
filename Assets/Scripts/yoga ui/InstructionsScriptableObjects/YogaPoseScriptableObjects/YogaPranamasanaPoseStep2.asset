@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: YogaPranamasanaPoseStep2
   m_EditorClassIdentifier: 
   instructionTitle: Yoga Pose - Pranamasana
-  instructionText: 'Step 1: Stand tall with your feet together, engaging your legs
-    and core while aligning your spine.'
+  instructionText: 'Step 1: Stand upright with your feet together, engaging your
+    legs and core while aligning your spine.'
   poseImage: {fileID: 21300000, guid: b6e8b69d8ff984fe981953ea385e0f90, type: 3}
