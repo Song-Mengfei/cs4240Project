@@ -4355,7 +4355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   progressFill: {fileID: 994243619}
   durationInSeconds: 10
-  decreaseSpeed: 0.3
+  decreaseSpeed: 0.1
   canFill: 0
   debugFastCompleteBool: 0
   isProgressFullyFilled: 0
