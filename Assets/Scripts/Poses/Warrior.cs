@@ -67,12 +67,13 @@ public class Warrior : Pose
     {
         float distance = Vector3.Distance(leftPos, rightPos);
 
-        bool areArmsStraight = Mathf.Abs(distance - armSpan) < 0.2f;
+        bool areArmsStraight = Mathf.Abs(distance - armSpan) < 0.5f;
 
         if (!areArmsStraight)
         {
             poseStat = "It looks like your arms aren¡¯t fully extended.";
             poseHint = "Try to fully extend your arms.";
+            Debug.Log("distance " + distance + "armSpan " + armSpan);
             Debug.Log("ArmsStraight");
         }
 

@@ -129,7 +129,7 @@ public class BurmesePose : Pose
 
     bool IsSitting(Vector3 headPos)
     {
-        bool isSitting = Mathf.Abs(headPos.y - chestHeight - upperbodyLength) < 0.2f;
+        bool isSitting = Mathf.Abs(headPos.y - chestHeight - upperbodyLength - 0.8f) < 0.2f;
 
         if (isSitting)
         {

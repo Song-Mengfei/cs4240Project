@@ -5,6 +5,11 @@ using System.Collections;
 public class ProgressBarFiller : MonoBehaviour
 {
     public Image progressFill; // Assign ProgressFill Image in Inspector
+
+    public Image backgroundImage;
+    public Color originalColor;
+    public Color correctPoseColor;
+
     //public float fillSpeed = 0.5f; // Speed at which the bar fills (NO LONGER USING SINCE THERES FIXED TIME)
     public float durationInSeconds = 10.0f;
     public float decreaseSpeed = 0.3f;
@@ -22,6 +27,7 @@ public class ProgressBarFiller : MonoBehaviour
     {
         progressFill.fillAmount = 0f; // Start at 0
         positionManager = PositionManager.Instance;
+        originalColor = backgroundImage.color;
     }
 
     void Update()
@@ -35,9 +41,11 @@ public class ProgressBarFiller : MonoBehaviour
         if (positionManager.IsPoseCorrect() || debugFastCompleteBool)
         {
             progressFill.fillAmount = Mathf.Clamp01(progressFill.fillAmount + Time.deltaTime / durationInSeconds);
+            backgroundImage.color = correctPoseColor;
 
             if (progressFill.fillAmount == 1)
             {
+                backgroundImage.color = originalColor;
                 isProgressFullyFilled = true;
                 ib.FullyFilled();
             }
@@ -45,6 +53,8 @@ public class ProgressBarFiller : MonoBehaviour
         else
         {
             Debug.Log("not correct");
+            backgroundImage.color = originalColor;
+
             progressFill.fillAmount = Mathf.Clamp01(progressFill.fillAmount - Time.deltaTime * decreaseSpeed);
         }
     }

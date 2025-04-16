@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d210cbcbae439c441a9dcf0e4f76bf5d, type: 3}
-  m_Name: YogaWarriorPose15sec
+  m_Name: YogaWarriorPose10sec
   m_EditorClassIdentifier: 
   instructionsSOs:
   - {fileID: 11400000, guid: afc0fc5b37c1e425c930f1c04583a068, type: 2}
@@ -18,5 +18,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a6b1e6e5150574477b2fe63483fc6098, type: 2}
   - {fileID: 11400000, guid: 75664cff4dfe1491d80c12778d66697b, type: 2}
   lessonPoseModelPrefab: {fileID: 2464223494539064533, guid: 9aa81361d288f4427b638465f693d91b, type: 3}
-  poseDurationInSeconds: 15
+  poseDurationInSeconds: 10
   pose: {fileID: -2388325941176922341, guid: 4ee1f97fdbb17d14d8d5949e59a50960, type: 3}
