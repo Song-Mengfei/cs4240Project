@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: YogaWarriorPoseStep1
   m_EditorClassIdentifier: 
   instructionTitle: Yoga Pose - Warrior
-  instructionText: Welcome to yoga lesson 3! Find a quiet space and let's get start!
+  instructionText: This the Warrior pose.
   poseImage: {fileID: 21300000, guid: 6c4f711ac63e64050847118120beb353, type: 3}

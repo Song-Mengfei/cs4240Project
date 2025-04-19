@@ -4,4 +4,6 @@ using UnityEngine;
 public class LessonSO : ScriptableObject
 {
     public PoseSO[] PoseSOs;
+
+    public string introString;
 }

@@ -19,6 +19,14 @@ public class Pranamasana : Pose
 
     public override bool IsCorrct(Vector3 _headPos, Vector3 _leftHandPos, Vector3 _rightHandPos, Quaternion _headRot, Quaternion _leftHandRot, Quaternion _rightHandRot)
     {
+        if (IsDebugCheatOn)
+        {
+            poseStat = "Great job! Your posture is perfect.";
+            poseHint = "Try to hold the pose a little longer.";
+            DebugManager.Log("DEBUG");
+            return true;
+        }
+
         return IsHeadStraight(_headRot) &&
                AreHandsTogether(_leftHandPos, _rightHandPos) &&
                AreArmsStraight(_leftHandRot, _rightHandRot) &&
@@ -41,7 +49,7 @@ public class Pranamasana : Pose
         euler.x = (euler.x > 180) ? euler.x - 360 : euler.x;
         euler.z = (euler.z > 180) ? euler.z - 360 : euler.z;
 
-        bool isHeadStraight = Mathf.Abs(euler.x) <= 10f && Mathf.Abs(euler.z) <= 10f;
+        bool isHeadStraight = Mathf.Abs(euler.x) <= 10f && Mathf.Abs(euler.z) <= 20f;
 
         if (!isHeadStraight)
         {
@@ -71,21 +79,25 @@ public class Pranamasana : Pose
 
     bool AreArmsStraight(Quaternion leftRot, Quaternion rightRot)
     {
-        float rotationDifference = Quaternion.Angle(leftRot, rightRot);
-
+        Vector3 leftEuler = leftRot.eulerAngles;
         Vector3 rightEuler = rightRot.eulerAngles;
 
-        bool leftIsFlat = (Mathf.Abs(rightEuler.x) > 350f || Mathf.Abs(rightEuler.x) < 10f) && (Mathf.Abs(rightEuler.z) < 10f || Mathf.Abs(rightEuler.z) > 350f);
-        bool areArmsStraight = leftIsFlat && rotationDifference > 170f && rotationDifference < 190f;
+        bool leftIsFlat = (Mathf.Abs(leftEuler.x) > 350f || Mathf.Abs(leftEuler.x) < 10f) && (Mathf.Abs(leftEuler.z) < 10f || Mathf.Abs(leftEuler.z) > 350f);
+        bool rightIsFlat = (Mathf.Abs(rightEuler.x) > 350f || Mathf.Abs(rightEuler.x) < 10f) && (Mathf.Abs(rightEuler.z) < 10f || Mathf.Abs(rightEuler.z) > 350f);
 
-        if (!areArmsStraight)
+        Debug.Log("leftIsFlat: " + leftIsFlat + ", rightIsFlat" + rightIsFlat);
+        Debug.Log("leftEuler: " + leftEuler + ", rightEuler" + rightEuler);
+        if (leftIsFlat && rightIsFlat)
         {
+            //Debug.Log("leftIsFlat: " + leftIsFlat + ", rightIsFlat" + rightIsFlat);
+            //Debug.Log("leftEuler: " + leftEuler + ", rightEuler" + rightEuler);
             poseStat = "It looks like your arms aren't level.";
-            poseHint = "Try to align both arms so they¡¯re on the same horizontal line.";
+            poseHint = "Try to align both arms so they're on the same horizontal line.";
             Debug.Log("ArmsStraight");
+            return false;
         }
 
-        return areArmsStraight;
+        return true;
     }
 
     bool IsStanding(Vector3 headPos)

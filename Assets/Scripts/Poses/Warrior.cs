@@ -4,9 +4,8 @@ using UnityEngine;
 public class Warrior : Pose
 {
     private float headOrigin;
-    private float leftForearmLength;
-    private float rightForearmLength;
-    private float shoulderLength;
+    private float armSpan;
+    private float thighLength;
 
     private string poseStat;
     private string poseHint;
@@ -19,14 +18,20 @@ public class Warrior : Pose
             DebugManager.Log("Please set the head height at first!");
         }
 
-        leftForearmLength = PlayerPrefs.GetFloat("LeftForearmLength", 0.4f);
-        rightForearmLength = PlayerPrefs.GetFloat("RightForearmLength", 0.4f);
-        shoulderLength = PlayerPrefs.GetFloat("ShoulderLength", 0.4f);
+        armSpan = PlayerPrefs.GetFloat("ArmSpan", 1.6f);
+        thighLength = PlayerPrefs.GetFloat("ThighLength", 0.4f);
     }
 
     public override bool IsCorrct(Vector3 _headPos, Vector3 _leftHandPos, Vector3 _rightHandPos,
                                   Quaternion _headRot, Quaternion _leftHandRot, Quaternion _rightHandRot)
     {
+        if (IsDebugCheatOn)
+        {
+            poseStat = "Great job! Your posture is perfect.";
+            poseHint = "Try to hold the pose a little longer.";
+            DebugManager.Log("DEBUG");
+            return true;
+        }
         DebugManager.Log("Checking BurmesePose...");
 
         return IsHeadStraight(_headRot) &&
@@ -52,7 +57,7 @@ public class Warrior : Pose
         euler.x = NormalizeAngle(euler.x);
         euler.z = NormalizeAngle(euler.z);
 
-        bool isHeadStraight = Mathf.Abs(euler.x) <= 10f && Mathf.Abs(euler.z) <= 10f;
+        bool isHeadStraight = Mathf.Abs(euler.x) <= 10f && Mathf.Abs(euler.z) <= 20f;
 
         if (!isHeadStraight)
         {
@@ -69,12 +74,13 @@ public class Warrior : Pose
     {
         float distance = Vector3.Distance(leftPos, rightPos);
 
-        bool areArmsStraight = Mathf.Abs(distance - 2 * leftForearmLength - 2 * rightForearmLength - shoulderLength + 0.2f) < 0.25f;
+        bool areArmsStraight = Mathf.Abs(distance - armSpan) < 1f;
 
         if (!areArmsStraight)
         {
-            poseStat = "It looks like your arms aren¡¯t fully extended.";
+            poseStat = "It looks like your arms aren't fully extended.";
             poseHint = "Try to fully extend your arms.";
+            Debug.Log("distance " + distance + "armSpan " + armSpan);
             Debug.Log("ArmsStraight");
         }
 
@@ -85,12 +91,13 @@ public class Warrior : Pose
 
     bool AreArmsSameLevel(Vector3 leftPos, Vector3 rightPos)
     {
-        bool areArmsSameLevel = Mathf.Abs(leftPos.y - rightPos.y) < 0.15f;
+        bool areArmsSameLevel = Mathf.Abs(leftPos.y - rightPos.y) < 0.3f;
+        Debug.Log("left: " + leftPos.y + " right: " + rightPos.y);
 
         if (!areArmsSameLevel)
         {
             poseStat = "It looks like your arms aren't level.";
-            poseHint = "Try to align both arms so they¡¯re on the same horizontal line.";
+            poseHint = "Try to align both arms so they're on the same horizontal line.";
             Debug.Log("ArmsStraight");
         }
 
@@ -120,7 +127,7 @@ public class Warrior : Pose
 
     bool IsLunge(Vector3 headPos)
     {
-        bool isLunge = headOrigin - headPos.y > 0.25f;
+        bool isLunge = Mathf.Abs(headOrigin - headPos.y - thighLength) < 0.2f;
 
         if (isLunge)
         {

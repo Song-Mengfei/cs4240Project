@@ -5,6 +5,8 @@ public class BurmesePose : Pose
     private float headOrigin;
     private float forearmLength;
     private float shoulderLength;
+    private float chestHeight;
+    private float upperbodyLength;
 
     private string poseStat;
     private string poseHint;
@@ -19,11 +21,21 @@ public class BurmesePose : Pose
 
         forearmLength = PlayerPrefs.GetFloat("LeftForearmLength", 0.4f);
         shoulderLength = PlayerPrefs.GetFloat("ShoulderLength", 0.4f);
+        chestHeight = PlayerPrefs.GetFloat("ChestHeight", 0.4f);
+        upperbodyLength = PlayerPrefs.GetFloat("UpperbodyLength", 0.5f);
     }
 
     public override bool IsCorrct(Vector3 _headPos, Vector3 _leftHandPos, Vector3 _rightHandPos,
                                   Quaternion _headRot, Quaternion _leftHandRot, Quaternion _rightHandRot)
     {
+        if (IsDebugCheatOn)
+        {
+            poseStat = "Great job! Your posture is perfect.";
+            poseHint = "Try to hold the pose a little longer.";
+            DebugManager.Log("DEBUG");
+            return true;
+        }
+
         DebugManager.Log("Checking BurmesePose...");
 
         return IsHeadStraight(_headRot) &&
@@ -50,7 +62,7 @@ public class BurmesePose : Pose
         euler.x = NormalizeAngle(euler.x);
         euler.z = NormalizeAngle(euler.z);
 
-        bool isHeadStraight = Mathf.Abs(euler.x) <= 10f && Mathf.Abs(euler.z) <= 10f;
+        bool isHeadStraight = Mathf.Abs(euler.x) <= 10f && Mathf.Abs(euler.z) <= 20f;
 
         if (!isHeadStraight) {
             poseStat = "The head is not facing forward.";
@@ -74,8 +86,8 @@ public class BurmesePose : Pose
 
         if (!areHandsSymmetric)
         {
-            poseStat = "The hand is not placed on the knee.";
-            poseHint = "Try to place your hand on your knee.";
+            poseStat = "The hands are not placed on the knees.";
+            poseHint = "Try to place your hands on your knees.";
         }
 
         DebugManager.Log(areHandsSymmetric ? "HandsSymmetry" : "NotHandsSymmetry");
@@ -93,8 +105,8 @@ public class BurmesePose : Pose
 
         if (!areHandsOnKnees)
         {
-            poseStat = "The hand is not placed on the knee.";
-            poseHint = "Try to place your hand on your knee.";
+            poseStat = "The hands are not placed on the knees.";
+            poseHint = "Try to place your hands on your knees.";
         }
 
         DebugManager.Log(areHandsOnKnees ? "HandsOnKnees" : "NotHandsOnKnees");
@@ -125,7 +137,7 @@ public class BurmesePose : Pose
 
     bool IsSitting(Vector3 headPos)
     {
-        bool isSitting = Mathf.Abs(headOrigin - headPos.y - 1.0f) < 0.2f;
+        bool isSitting = Mathf.Abs(headPos.y - chestHeight - upperbodyLength - 0.8f) < 0.2f;
 
         if (isSitting)
         {
