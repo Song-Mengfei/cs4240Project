@@ -61,10 +61,10 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.38f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Samples\XR Interaction Toolkit\3.0.7\Starter Assets\Editor\Scripts\StarterAssetsSampleProjectValidation.cs" />
+    <Compile Include="Assets\Samples\XR Interaction Toolkit\3.0.8\Starter Assets\Editor\Scripts\StarterAssetsSampleProjectValidation.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Samples\XR Interaction Toolkit\3.0.7\Starter Assets\Editor\StarterAssets.Editor.asmdef" />
+    <None Include="Assets\Samples\XR Interaction Toolkit\3.0.8\Starter Assets\Editor\StarterAssets.Editor.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
