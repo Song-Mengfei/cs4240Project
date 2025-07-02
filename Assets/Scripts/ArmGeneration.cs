@@ -69,7 +69,7 @@ public class ArmGeneration : MonoBehaviour
 
         leftForearm.transform.position = forearmPos;
         leftForearm.transform.rotation = forearmRot;
-        leftForearm.transform.localScale = new Vector3(0.05f, leftForearmLength / 2, 0.05f);
+        leftForearm.transform.localScale = new Vector3(0.03f, leftForearmLength / 2, 0.03f);
         leftElbowPos = forearmPos + forearmRot * Vector3.down * (leftForearmLength / 2);
     }
 
@@ -89,7 +89,7 @@ public class ArmGeneration : MonoBehaviour
 
         rightForearm.transform.position = forearmPos;
         rightForearm.transform.rotation = forearmRot;
-        rightForearm.transform.localScale = new Vector3(0.05f, rightForearmLength / 2, 0.05f);
+        rightForearm.transform.localScale = new Vector3(0.03f, rightForearmLength / 2, 0.03f);
         rightElbowPos = forearmPos + forearmRot * Vector3.down * (rightForearmLength / 2);
     }
 
@@ -119,7 +119,7 @@ public class ArmGeneration : MonoBehaviour
 
         leftUpperArm.transform.position = upperArmPos;
         leftUpperArm.transform.rotation = upperArmRot;
-        leftUpperArm.transform.localScale = new Vector3(0.05f, upperArmLength / 2, 0.05f);
+        leftUpperArm.transform.localScale = new Vector3(0.03f, upperArmLength / 2, 0.03f);
 
         leftShoulder.transform.position = leftShoulderPos;
         leftShoulder.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
@@ -154,7 +154,7 @@ public class ArmGeneration : MonoBehaviour
 
         rightUpperArm.transform.position = upperArmPos;
         rightUpperArm.transform.rotation = upperArmRot;
-        rightUpperArm.transform.localScale = new Vector3(0.05f, upperArmLength / 2, 0.05f);
+        rightUpperArm.transform.localScale = new Vector3(0.03f, upperArmLength / 2, 0.03f);
 
         rightShoulder.transform.position = leftShoulderPos;
         rightShoulder.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);

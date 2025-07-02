@@ -1,17 +1,22 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Drawing;
 
 public class InstructionBoard : MonoBehaviour
 {
     public LessonSO[] lessonSOs; // Array of lesson scriptable objects
+    [SerializeField]
+    public PoseSO[] poseSOs; // Array of lesson scriptable poses
     [SerializeField]
     private int currentStep = 0;
     [SerializeField]
     private int currLessonPose = 0;
     [SerializeField]
     private int currLessonNum = 0;
+    private int currPoseNum = 0;
     private bool isStartOfLesson = true;
+    private bool isPose = false;
 
     // Instructions related variables
     public GameObject instructionElements;
@@ -28,6 +33,7 @@ public class InstructionBoard : MonoBehaviour
 
     // Confirmation screen related variables
     public GameObject ConfirmationElements;
+    public GameObject PoseCompletedElements;
 
     // Pause related
     public GameObject pauseUI;
@@ -37,6 +43,7 @@ public class InstructionBoard : MonoBehaviour
     void PreLoadPoseModels()
     {
         int size = lessonSOs[currLessonNum].PoseSOs.Length;
+         
         poseModelRef = new GameObject[size];
 
         for (int i = 0; i < size; i++)
@@ -53,12 +60,29 @@ public class InstructionBoard : MonoBehaviour
 
         if (UserStatsManager.Instance == null)
         {
-            currLessonNum = 0;
+            StartLesson(0);
         }
         else
         {
-            currLessonNum = UserStatsManager.Instance.GetCurrLessonNumber();
+            int num = UserStatsManager.Instance.GetCurrLessonNumber();
+
+            if (num >= 0)
+            {
+                StartLesson(num);
+            }
+            else
+            {
+                isPose = true;
+                StartPose(0 - num);
+            }
         }   
+
+        
+    }
+
+    private void StartLesson(int lessonNum)
+    {
+        currLessonNum = lessonNum;
 
         // Preload all the pose model gos and then set active when using
         PreLoadPoseModels();
@@ -73,7 +97,40 @@ public class InstructionBoard : MonoBehaviour
         progressBarFiller.ib = GetComponent<InstructionBoard>();
     }
 
+    private void StartPose(int poseNum) 
+    {
+        currPoseNum = poseNum - 1;
+        poseModelRef = new GameObject[1];
+
+        poseModelRef[0] = Instantiate(poseSOs[currPoseNum].lessonPoseModelPrefab, poseSpawnTransform.position, Quaternion.identity, poseSpawnTransform);
+        
+        instructionTitleUI.text = poseSOs[currPoseNum].instructionsSOs[currentStep].instructionTitle;
+        instructionTextUI.text = poseSOs[currPoseNum].instructionsSOs[currentStep].instructionText;
+        poseImageUI.sprite = poseSOs[currPoseNum].instructionsSOs[currentStep].poseImage;
+        
+        poseModelRef[0].SetActive(true);
+        
+        PoseManager.Instance.SetCurrPose(poseSOs[currPoseNum].pose);
+
+        nextButtonTextUI.text = "Next";
+
+        // Get reference to progress bar
+        progressBarFiller.ib = GetComponent<InstructionBoard>();
+    }
+
     public void NextStep()
+    {
+        if(isPose)
+        {
+            NextPoseStep();
+        }
+        else
+        {
+            NextLessonStep();
+        }
+    }
+
+    private void NextLessonStep()
     {
         if (isStartOfLesson)
         {
@@ -89,11 +146,29 @@ public class InstructionBoard : MonoBehaviour
             return; // Exit function to prevent out-of-bounds issue
         }
 
-        currentStep++; 
+        currentStep++;
         UpdateInstruction();
 
         //After updating, check if it's the last step and switch buttons
         if (currentStep == lessonSOs[currLessonNum].PoseSOs[currLessonPose].instructionsSOs.Length - 1)
+        {
+            nextButtonTextUI.text = "Start";
+        }
+    }
+
+    private void NextPoseStep()
+    {
+        if (currentStep >= poseSOs[currPoseNum].instructionsSOs.Length - 1)
+        {
+            StartLesson(poseSOs[currPoseNum]);
+            return; // Exit function to prevent out-of-bounds issue
+        }
+
+        currentStep++;
+        UpdatePoseInstruction();
+
+        //After updating, check if it's the last step and switch buttons
+        if (currentStep == poseSOs[currPoseNum].instructionsSOs.Length - 1)
         {
             nextButtonTextUI.text = "Start";
         }
@@ -115,6 +190,14 @@ public class InstructionBoard : MonoBehaviour
             poseImageUI.sprite = lessonSOs[currLessonNum].PoseSOs[currLessonPose].instructionsSOs[currentStep].poseImage;
         }
     }
+
+    void UpdatePoseInstruction()
+    {
+        instructionTitleUI.text = poseSOs[currPoseNum].instructionsSOs[currentStep].instructionTitle;
+        instructionTextUI.text = poseSOs[currPoseNum].instructionsSOs[currentStep].instructionText;
+        poseImageUI.sprite = poseSOs[currPoseNum].instructionsSOs[currentStep].poseImage;
+    }
+
     void UpdateLesson()
     {
         if (currLessonPose - 1 >= 0)
@@ -130,10 +213,21 @@ public class InstructionBoard : MonoBehaviour
         PoseManager.Instance.SetCurrPose(lessonSOs[currLessonNum].PoseSOs[currLessonPose].pose);
     }
 
-    public void StartLesson()
+    public void StartLesson(PoseSO pose)
     {
         HideAll();
         ShowLessonUI(); 
+
+        if (progressBarFiller != null)
+        {
+            progressBarFiller.StartLesson(pose.poseDurationInSeconds);
+        }
+    }
+
+    public void StartLesson()
+    {
+        HideAll();
+        ShowLessonUI();
 
         if (progressBarFiller != null)
         {
@@ -146,6 +240,7 @@ public class InstructionBoard : MonoBehaviour
         lessonElements.SetActive(false);
         instructionElements.SetActive(false);
         ConfirmationElements.SetActive(false);
+        PoseCompletedElements.SetActive(false);
         pauseUI.SetActive(false);
         pauseButton.SetActive(true);
     }
@@ -167,13 +262,23 @@ public class InstructionBoard : MonoBehaviour
         ConfirmationElements.SetActive(true);
         currActiveNonPauseUI = ConfirmationElements;
     }
+    void ShowPoseCompletedUI()
+    {
+        PoseCompletedElements.SetActive(true);
+        currActiveNonPauseUI = PoseCompletedElements;
+    }
 
     public void FullyFilled()
     {
         HideAll();
 
         // Check if it's the last pose
-        if (currLessonPose == lessonSOs[currLessonNum].PoseSOs.Length - 1)
+        if (isPose)
+        {
+            isPose = false;
+            ShowPoseCompletedUI();
+        }
+        else if (currLessonPose == lessonSOs[currLessonNum].PoseSOs.Length - 1)
         {
             ShowConfirmationUI();
         }
